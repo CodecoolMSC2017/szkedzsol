@@ -32,14 +32,14 @@
     <h1>Login</h1>
     <form id="login-form" onsubmit="return false;">
         <input type="text" name="email">
-        <input type="password" name="password">
+        <input type="text" name="name">
         <button id="login-button">Login</button>
     </form>
 </div>
 <div id="profile-content" class="hidden content">
     <h1>Profile</h1>
     <p>Email: <span id="user-email"></span></p>
-    <p>Password: <span id="user-password"></span></p>
+    <p>Name: <span id="user-name"></span></p>
     <h2>Links</h2>
     <ul>
         <li><a href="javascript:void(0);" onclick="onShopsClicked();">Shops</a></li>

@@ -82,4 +82,4 @@ INSERT INTO slot(col_id,start, stop) VALUES
 INSERT INTO task(description, user_id) VALUES
     ('kutya simogatas', 1),
     ('kutya setaltatas', 2);
-S
+
