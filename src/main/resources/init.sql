@@ -17,20 +17,23 @@ CREATE TABLE users (
     email TEXT UNIQUE NOT NULL,
     role TEXT NOT NULL
 );
-CREATE TABLE col (
-    id INTEGER PRIMARY KEY,
-    name TEXT NOT NULL
-);
-
 
 CREATE TABLE schedule (
     id INTEGER PRIMARY KEY,
     user_id INTEGER NOT NULL,
 	name TEXT NOT NULL,
 	col_id INTEGER,
-    FOREIGN KEY(col_id)REFERENCES col(id),
 	FOREIGN KEY(user_id)REFERENCES users(id)
 );
+CREATE TABLE col (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+	schedule_id INTEGER ,
+	FOREIGN KEY(schedule_id) REFERENCES schedule(id)
+);
+
+
+
 
 
 CREATE TABLE slot (
@@ -83,6 +86,7 @@ INSERT INTO slot(id,col_id,start,stop)VALUES
 INSERT INTO task(id,description,user_id)VALUES
     (1,'kutya simogatas',001),
     (2,'kutya setaltatas',002);
+
 
 
 
