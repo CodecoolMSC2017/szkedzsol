@@ -4,21 +4,31 @@ import java.util.Objects;
 
 public final class User extends AbstractModel {
 
+    private final String name;
     private final String email;
-    private final String password;
+    private Role role;
 
-    public User(int id, String email, String password) {
+
+    //CONSTRUCTOR
+    public User(int id, String name, String email, Role role) {
         super(id);
+        this.name = name;
         this.email = email;
-        this.password = password;
+        this.role = role;
     }
 
+
+    //GETTERS
     public String getEmail() {
         return email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getName() {
+        return name;
+    }
+
+    public Role getRole() {
+        return role;
     }
 
     @Override
@@ -27,12 +37,18 @@ public final class User extends AbstractModel {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         User user = (User) o;
-        return Objects.equals(email, user.email) &&
-            Objects.equals(password, user.password);
+        return Objects.equals(name, user.name) &&
+            Objects.equals(email, user.email) &&
+            role == user.role;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), email, password);
+
+        return Objects.hash(super.hashCode(), name, email, role);
     }
 }
+
+
+
+
