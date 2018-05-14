@@ -4,6 +4,7 @@ const UNAUTHORIZED = 401;
 const NOT_FOUND = 404;
 const INTERNAL_SERVER_ERROR = 500;
 
+let registerContentDivEl;
 let loginContentDivEl;
 let profileContentDivEl;
 let couponContentDivEl;
@@ -98,6 +99,7 @@ function setUnauthorized() {
 }
 
 function onLoad() {
+    registerContentDivEl = document.getElementById('register-content');
     loginContentDivEl = document.getElementById('login-content');
     profileContentDivEl = document.getElementById('profile-content');
     couponContentDivEl = document.getElementById('coupon-content');
@@ -106,6 +108,9 @@ function onLoad() {
     shopsContentDivEl = document.getElementById('shops-content');
     backToProfileContentDivEl = document.getElementById('back-to-profile-content');
     logoutContentDivEl = document.getElementById('logout-content');
+
+    const registerButtonEl = document.getElementById('register-button');
+    registerButtonEl.addEventListener('click', onRegisterButtonClick);
 
     const loginButtonEl = document.getElementById('login-button');
     loginButtonEl.addEventListener('click', onLoginButtonClicked);

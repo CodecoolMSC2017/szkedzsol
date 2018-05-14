@@ -49,4 +49,16 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
         String email = resultSet.getString("email");
         return new User(id, name, email, Role.REGISTERED);
     }
+
+    public void addUser(String email, String name) throws SQLException {
+        if (email == null || "".equals(email) || name == null || "".equals(name)) {
+            throw new IllegalArgumentException("Email/name cannot be null or empty");
+        }
+        String sql = "INSERT INTO users (name, email, role) VALUES (?, ?, 'REGISTERED')";
+        try(PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, name);
+            statement.setString(2, email);
+            executeInsert(statement);
+        }
+    }
 }

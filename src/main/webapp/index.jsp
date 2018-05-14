@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <c:url value="/style.css" var="styleUrl"/>
         <c:url value="/index.js" var="indexScriptUrl"/>
+        <c:url value="/register.js" var="registerScriptUrl"/>
         <c:url value="/login.js" var="loginScriptUrl"/>
         <c:url value="/profile.js" var="profileScriptUrl"/>
         <c:url value="/shop.js" var="shopScriptUrl"/>
@@ -17,6 +18,7 @@
         <c:url value="/logout.js" var="logoutScriptUrl"/>
         <link rel="stylesheet" type="text/css" href="${styleUrl}">
         <script src="${indexScriptUrl}"></script>
+        <script src="${registerScriptUrl}"></script>
         <script src="${loginScriptUrl}"></script>
         <script src="${profileScriptUrl}"></script>
         <script src="${shopScriptUrl}"></script>
@@ -28,7 +30,15 @@
         <title>App</title>
     </head>
 <body>
-<div id="login-content" class="content">
+<div id="register-content" class="content">
+    <h1>Register</h1>
+    <form id="register-form" onsubmit="return false;">
+        <input type="text" name="email">
+        <input type="text" name="name">
+        <button id="register-button">Sign up</button>
+    </form>
+</div>
+<div id="login-content" class="hidden content">
     <h1>Login</h1>
     <form id="login-form" onsubmit="return false;">
         <input type="text" name="email">
