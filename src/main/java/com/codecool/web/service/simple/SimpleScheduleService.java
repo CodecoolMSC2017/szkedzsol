@@ -15,12 +15,21 @@ public class SimpleScheduleService implements ScheduleService {
     public SimpleScheduleService(ScheduleDao scheduleDao) {
         this.scheduleDao = scheduleDao;
     }
+
     @Override
     public List<Schedule> getSchedules(int userId) throws SQLException, ServiceException {
-        try{
+        try {
             return scheduleDao.findByUserId(userId);
+        } catch (IllegalArgumentException ex) {
+            throw new ServiceException(ex.getMessage());
         }
-        catch (IllegalArgumentException ex) {
+    }
+
+    @Override
+    public void addSchedule(int userId, String scheduleTitle) throws SQLException, ServiceException {
+        try {
+            scheduleDao.insertSchedule(userId, scheduleTitle);
+        } catch (IllegalArgumentException ex) {
             throw new ServiceException(ex.getMessage());
         }
     }
