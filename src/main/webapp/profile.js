@@ -6,11 +6,11 @@ function onSchedulesClicked() {
     xhr.send();
 }
 
-function onCouponsClicked() {
+function onTasksClicked() {
     const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onCouponsResponse);
+    xhr.addEventListener('load', onTasksResponse);
     xhr.addEventListener('error', onNetworkError);
-    xhr.open('GET', 'protected/coupons');
+    xhr.open('GET', 'protected/tasks');
     xhr.send();
 }
 

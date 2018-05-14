@@ -12,8 +12,8 @@
         <c:url value="/profile.js" var="profileScriptUrl"/>
         <c:url value="/schedule.js" var="scheduleScriptUrl"/>
         <c:url value="/schedules.js" var="schedulesScriptUrl"/>
-        <c:url value="/coupon.js" var="couponScriptUrl"/>
-        <c:url value="/coupons.js" var="couponsScriptUrl"/>
+        <c:url value="/task.js" var="taskScriptUrl"/>
+        <c:url value="/tasks.js" var="tasksScriptUrl"/>
         <c:url value="/back-to-profile.js" var="backToProfileScriptUrl"/>
         <c:url value="/logout.js" var="logoutScriptUrl"/>
         <link rel="stylesheet" type="text/css" href="${styleUrl}">
@@ -23,8 +23,8 @@
         <script src="${profileScriptUrl}"></script>
         <script src="${scheduleScriptUrl}"></script>
         <script src="${schedulesScriptUrl}"></script>
-        <script src="${couponScriptUrl}"></script>
-        <script src="${couponsScriptUrl}"></script>
+        <script src="${taskScriptUrl}"></script>
+        <script src="${tasksScriptUrl}"></script>
         <script src="${backToProfileScriptUrl}"></script>
         <script src="${logoutScriptUrl}"></script>
         <title>App</title>
@@ -61,6 +61,7 @@
     <h2>Links</h2>
     <ul>
         <li><a href="javascript:void(0);" onclick="onSchedulesClicked();">Schedules</a></li>
+        <li><a href="javascript:void(0);" onclick="onTasksClicked();">Tasks</a></li>
     </ul>
 </div>
 <div id="schedules-content" class="hidden content">
@@ -84,31 +85,31 @@
     <p>ID: <span id="schedule-id"></span></p>
     <p>Name: <span id="schedule-name"></span></p>
 </div>
-<div id="coupons-content" class="hidden content">
-    <h1>Coupons</h1>
-    <table id="coupons">
+<div id="tasks-content" class="hidden content">
+    <h1>Tasks</h1>
+    <table id="tasks">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Percentage (%)</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
         </tbody>
     </table>
-    <h2>Add new coupon</h2>
-    <form id="coupon-form" onsubmit="return false;">
+    <h2>Add new Task</h2>
+    <form id="task-form" onsubmit="return false;">
         <input type="text" name="name">
-        <input type="range" min="0" max="100" name="percentage">
-        <button onclick="onCouponAddClicked();">Add</button>
+        <input type="range" min="0" max="100" name="description">
+        <button onclick="onTaskAddClicked();">Add</button>
     </form>
 </div>
-<div id="coupon-content" class="hidden content">
+<div id="task-content" class="hidden content">
     <h1>Coupon</h1>
-    <p>ID: <span id="coupon-id"></span></p>
-    <p>Name: <span id="coupon-name"></span></p>
-    <p>Percentage: <span id="coupon-percentage"></span>%</p>
+    <p>ID: <span id="task-id"></span></p>
+    <p>Name: <span id="task-name"></span></p>
+    <p>Percentage: <span id="task-description"></span>%</p>
     <p>Shops: <span id="coupon-shops"></span></p>
     <h2>Add to shops</h2>
     <form id="coupon-shops-form" onsubmit="return false">
