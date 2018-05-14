@@ -1,8 +1,8 @@
-function onShopsClicked() {
+function onSchedulesClicked() {
     const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onShopsResponse);
+    xhr.addEventListener('load', onSchedulesResponse);
     xhr.addEventListener('error', onNetworkError);
-    xhr.open('GET', 'protected/shops');
+    xhr.open('GET', 'protected/schedules');
     xhr.send();
 }
 
@@ -19,8 +19,8 @@ function onProfileLoad(user) {
     showContents(['profile-content', 'logout-content']);
 
     const userEmailSpandEl = document.getElementById('user-email');
-    const userPasswordSpanEl = document.getElementById('user-password');
+    const userNameSpanEl = document.getElementById('user-name');
 
     userEmailSpandEl.textContent = user.email;
-    userPasswordSpanEl.textContent = user.password;
+    userNameSpanEl.textContent = user.name;
 }

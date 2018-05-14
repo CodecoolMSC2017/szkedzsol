@@ -1,7 +1,7 @@
 let shopsTableEl;
 let shopsTableBodyEl;
 
-function onShopClicked() {
+function onScheduleClicked() {
     const shopId = this.dataset.shopId;
 
     const params = new URLSearchParams();
@@ -68,14 +68,14 @@ function appendShops(shops) {
     }
 }
 
-function onShopsLoad(shops) {
+function onSchedulesLoad(schedules) {
     shopsTableEl = document.getElementById('shops');
     shopsTableBodyEl = shopsTableEl.querySelector('tbody');
 
     appendShops(shops);
 }
 
-function onShopsResponse() {
+function onSchedulesResponse() {
     if (this.status === OK) {
         showContents(['shops-content', 'back-to-profile-content', 'logout-content']);
         onShopsLoad(JSON.parse(this.responseText));

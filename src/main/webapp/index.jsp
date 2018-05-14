@@ -42,12 +42,11 @@
     <p>Name: <span id="user-name"></span></p>
     <h2>Links</h2>
     <ul>
-        <li><a href="javascript:void(0);" onclick="onShopsClicked();">Shops</a></li>
-        <li><a href="javascript:void(0);" onclick="onCouponsClicked();">Coupons</a></li>
+        <li><a href="javascript:void(0);" onclick="onSchedulesClicked();">Schedules</a></li>
     </ul>
 </div>
-<div id="shops-content" class="hidden content">
-    <h1>Shops</h1>
+<div id="schedules-content" class="hidden content">
+    <h1>Schedules</h1>
     <table id="shops">
         <thead>
             <tr>
