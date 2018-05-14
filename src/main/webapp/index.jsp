@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <c:url value="/style.css" var="styleUrl"/>
+        <c:url value="/index.css" var="indexUrl"/>
         <c:url value="/index.js" var="indexScriptUrl"/>
         <c:url value="/register.js" var="registerScriptUrl"/>
         <c:url value="/login.js" var="loginScriptUrl"/>
@@ -17,6 +18,7 @@
         <c:url value="/back-to-profile.js" var="backToProfileScriptUrl"/>
         <c:url value="/logout.js" var="logoutScriptUrl"/>
         <link rel="stylesheet" type="text/css" href="${styleUrl}">
+        <link rel="stylesheet" type="text/css" href="${indexUrl}">
         <script src="${indexScriptUrl}"></script>
         <script src="${registerScriptUrl}"></script>
         <script src="${loginScriptUrl}"></script>
@@ -37,10 +39,11 @@
         <input type="text" name="email">
         <p>Name</p>
         <input type="text" name="name">
-        <button id="register-button">Sign up</button>
+        <br><br>
+        <button id="register-button" class="mainButton">Sign up</button>
     </form>
     <br>
-    <button id="tologin-button">Already registered</button>
+    <button id="tologin-button" class="mainButton">Already registered</button>
 </div>
 <div id="login-content" class="hidden content">
     <h1>Login</h1>
@@ -49,10 +52,11 @@
         <input type="text" name="email">
         <p>Name</p>
         <input type="text" name="name">
-        <button id="login-button">Sign in</button>
+        <br><br>
+        <button id="login-button" class="mainButton">Sign in</button>
     </form>
     <br>
-    <button id="toregister-button">Sign up</button>
+    <button id="toregister-button" class="mainButton">Sign up</button>
 </div>
 <div id="profile-content" class="hidden content">
     <h1>Profile</h1>
