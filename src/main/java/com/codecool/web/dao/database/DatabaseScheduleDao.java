@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseScheduleDao extends AbstractDao implements ScheduleDao {
-    DatabaseScheduleDao(Connection connection) {
+    public DatabaseScheduleDao(Connection connection) {
         super(connection);
     }
 
@@ -29,17 +29,21 @@ public class DatabaseScheduleDao extends AbstractDao implements ScheduleDao {
     }
 
     @Override
-    public Schedule findByEmail(int user_id) throws SQLException {
-        String sql = "SELECT id, name FROM schedule WHERE id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, user_id);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    return fetchSchedule(resultSet);
-                }
-            }
+    public List<Schedule> findByUserId(int userId) throws SQLException {
+        if (userId == 0 || "".equals(userId)) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
         }
-        return null;
+        System.out.println(userId);
+        List<Schedule> schedules = new ArrayList<>();
+        String sql = "SELECT id, user_id, name FROM schedule WHERE user_id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    schedules.add(fetchSchedule(resultSet));
+                }
+                return schedules;
+            }
     }
 
 

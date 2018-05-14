@@ -9,8 +9,8 @@ let loginContentDivEl;
 let profileContentDivEl;
 let couponContentDivEl;
 let couponsContentDivEl;
-let shopContentDivEl;
-let shopsContentDivEl;
+let scheduleContentDivEl;
+let schedulesContentDivEl;
 let backToProfileContentDivEl;
 let logoutContentDivEl;
 
@@ -63,7 +63,7 @@ function onNetworkError(response) {
     document.body.remove();
     const bodyEl = document.createElement('body');
     document.appendChild(bodyEl);
-    newError(bodyEl, 'Network error, please try reloaing the page');
+    newError(bodyEl, 'Network error, please try relodaing the page');
 }
 
 function onOtherResponse(targetEl, xhr) {
@@ -104,8 +104,8 @@ function onLoad() {
     profileContentDivEl = document.getElementById('profile-content');
     couponContentDivEl = document.getElementById('coupon-content');
     couponsContentDivEl = document.getElementById('coupons-content');
-    shopContentDivEl = document.getElementById('shop-content');
-    shopsContentDivEl = document.getElementById('shops-content');
+    scheduleContentDivEl = document.getElementById('schedule-content');
+    schedulesContentDivEl = document.getElementById('schedules-content');
     backToProfileContentDivEl = document.getElementById('back-to-profile-content');
     logoutContentDivEl = document.getElementById('logout-content');
 

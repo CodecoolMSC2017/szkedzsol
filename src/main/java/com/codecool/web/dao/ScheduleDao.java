@@ -14,7 +14,7 @@ public interface ScheduleDao  {
 
     List<Schedule> findAll() throws SQLException;
 
-    Schedule findByEmail(int user_id) throws SQLException;
+    List<Schedule> findByUserId(int userId) throws SQLException;
 
     void insertSchedule(int id ,int user_id,String name)throws SQLException;
 

@@ -10,8 +10,8 @@
         <c:url value="/register.js" var="registerScriptUrl"/>
         <c:url value="/login.js" var="loginScriptUrl"/>
         <c:url value="/profile.js" var="profileScriptUrl"/>
-        <c:url value="/shop.js" var="shopScriptUrl"/>
-        <c:url value="/shops.js" var="shopsScriptUrl"/>
+        <c:url value="/schedule.js" var="scheduleScriptUrl"/>
+        <c:url value="/schedules.js" var="schedulesScriptUrl"/>
         <c:url value="/coupon.js" var="couponScriptUrl"/>
         <c:url value="/coupons.js" var="couponsScriptUrl"/>
         <c:url value="/back-to-profile.js" var="backToProfileScriptUrl"/>
@@ -21,8 +21,8 @@
         <script src="${registerScriptUrl}"></script>
         <script src="${loginScriptUrl}"></script>
         <script src="${profileScriptUrl}"></script>
-        <script src="${shopScriptUrl}"></script>
-        <script src="${shopsScriptUrl}"></script>
+        <script src="${scheduleScriptUrl}"></script>
+        <script src="${schedulesScriptUrl}"></script>
         <script src="${couponScriptUrl}"></script>
         <script src="${couponsScriptUrl}"></script>
         <script src="${backToProfileScriptUrl}"></script>
@@ -65,7 +65,7 @@
 </div>
 <div id="schedules-content" class="hidden content">
     <h1>Schedules</h1>
-    <table id="shops">
+    <table id="schedules">
         <thead>
             <tr>
                 <th>ID</th>
@@ -76,15 +76,15 @@
         </tbody>
     </table>
     <h2>Add new shop</h2>
-    <form id="shop-form" onsubmit="return false;">
+    <form id="schedule-form" onsubmit="return false;">
         <input type="text" name="name">
-        <button onclick="onShopAddClicked();">Add</button>
+        <button onclick="onScheduleAddClicked();">Add</button>
     </form>
 </div>
-<div id="shop-content" class="hidden content">
+<div id="schedule-content" class="hidden content">
     <h1>Shop</h1>
-    <p>ID: <span id="shop-id"></span></p>
-    <p>Name: <span id="shop-name"></span></p>
+    <p>ID: <span id="schedule-id"></span></p>
+    <p>Name: <span id="schedule-name"></span></p>
 </div>
 <div id="coupons-content" class="hidden content">
     <h1>Coupons</h1>
