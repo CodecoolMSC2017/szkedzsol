@@ -18,10 +18,10 @@ public class DatabaseSlotDao extends AbstractDao implements SlotDao {
     @Override
     public Slot findSlotById(int id) throws SQLException {
         String sql = "SELECT * FROM slot where id = ?";
-        try(PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setInt(1,id);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return fetchSlot(resultSet);
             }
         }
@@ -32,10 +32,10 @@ public class DatabaseSlotDao extends AbstractDao implements SlotDao {
     public List<Slot> findAllSlotByColId(int col_id) throws SQLException {
         List<Slot> slots = new ArrayList<>();
         String sql = "select * from slot where col_id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setInt(1,col_id);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, col_id);
             ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 slots.add(fetchSlot(resultSet));
             }
         }
@@ -44,11 +44,11 @@ public class DatabaseSlotDao extends AbstractDao implements SlotDao {
 
     @Override
     public void insertSlot(int col_id, int start, int stop) throws SQLException {
-        String sql ="INSERT INTO slot(col_id,start,stop)VALUES(?,?,?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setInt(1,col_id);
-            statement.setInt(2,start);
-            statement.setInt(3,stop);
+        String sql = "INSERT INTO slot (col_id, start, stop) VALUES (?, ?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, col_id);
+            statement.setInt(2, start);
+            statement.setInt(3, stop);
             statement.executeUpdate();
         }
     }
@@ -59,7 +59,7 @@ public class DatabaseSlotDao extends AbstractDao implements SlotDao {
         int col_id = resultSet.getInt("col_id");
         int start = resultSet.getInt("start");
         int stop = resultSet.getInt("stop");
-        return new Slot(id,col_id,start,stop);
+        return new Slot(id, col_id, start, stop);
     }
 
 }

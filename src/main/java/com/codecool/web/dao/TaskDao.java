@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface TaskDao {
 
-    List<Task> findTasksByScheduleId(int id)throws SQLException;
+    List<Task> findTasksByScheduleId(int id) throws SQLException;
 
-    Task fetchTasks(ResultSet resultSet)throws SQLException;
+    Task fetchTasks(ResultSet resultSet) throws SQLException;
 
     List<Task> findByUserId(int userId) throws SQLException;
 }

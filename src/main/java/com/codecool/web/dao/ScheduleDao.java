@@ -8,20 +8,18 @@ import com.codecool.web.model.Task;
 import java.sql.*;
 import java.util.List;
 
-public interface ScheduleDao  {
-
+public interface ScheduleDao {
 
 
     List<Schedule> findAll() throws SQLException;
 
     List<Schedule> findByUserId(int userId) throws SQLException;
 
-    void insertSchedule(int id ,int user_id,String name)throws SQLException;
+    void insertSchedule(int user_id, String name) throws SQLException;
 
-    void deleteSchedule(int id)throws SQLException;
+    void deleteSchedule(int id) throws SQLException;
 
     Schedule fetchSchedule(ResultSet resultSet) throws SQLException;
-
 
 
 }

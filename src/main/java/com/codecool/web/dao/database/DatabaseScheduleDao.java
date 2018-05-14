@@ -24,49 +24,44 @@ public class DatabaseScheduleDao extends AbstractDao implements ScheduleDao {
             while (resultSet.next()) {
                 schedules.add(fetchSchedule(resultSet));
             }
-            return schedules ;
+            return schedules;
         }
     }
 
     @Override
     public List<Schedule> findByUserId(int userId) throws SQLException {
-        if (userId == 0 || "".equals(userId)) {
-            throw new IllegalArgumentException("Email cannot be null or empty");
-        }
-        System.out.println(userId);
         List<Schedule> schedules = new ArrayList<>();
         String sql = "SELECT id, user_id, name FROM schedule WHERE user_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, userId);
             ResultSet resultSet = statement.executeQuery();
-                while (resultSet.next()) {
-                    schedules.add(fetchSchedule(resultSet));
-                }
-                return schedules;
+            while (resultSet.next()) {
+                schedules.add(fetchSchedule(resultSet));
             }
+            return schedules;
+        }
     }
 
 
-
-    public void insertSchedule(int id ,int user_id,String name)throws SQLException{
-        String sql = "INSERT INTO schedule (user_id,name)VALUES(?,?);";
-        try (PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setInt(1,user_id);
-            statement.setString(2,name);
+    public void insertSchedule(int user_id, String name) throws SQLException {
+        String sql = "INSERT INTO schedule (user_id, name)VALUES(?,?);";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, user_id);
+            statement.setString(2, name);
             statement.executeUpdate();
         }
 
     }
 
-    public void deleteSchedule(int id)throws SQLException{
+    public void deleteSchedule(int id) throws SQLException {
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);
         String sql = "DELETE FROM schedule WHERE id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setInt(1,id);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id);
             statement.executeUpdate();
             connection.commit();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             connection.rollback();
             throw e;
         } finally {
@@ -75,13 +70,11 @@ public class DatabaseScheduleDao extends AbstractDao implements ScheduleDao {
     }
 
 
-
-
     public Schedule fetchSchedule(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("id");
         int user_id = resultSet.getInt("user_id");
         String name = resultSet.getString("name");
-        return new Schedule(id,user_id,name);
+        return new Schedule(id, user_id, name);
 
     }
 

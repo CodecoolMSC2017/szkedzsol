@@ -8,12 +8,12 @@ import java.util.List;
 
 public interface SlotDao {
 
-    Slot findSlotById(int id)throws SQLException;
+    Slot findSlotById(int id) throws SQLException;
 
-    List<Slot> findAllSlotByColId(int col_id)throws SQLException;
+    List<Slot> findAllSlotByColId(int col_id) throws SQLException;
 
-    void insertSlot(int col_id,int start,int stop) throws SQLException;
+    void insertSlot(int col_id, int start, int stop) throws SQLException;
 
-    Slot fetchSlot(ResultSet resultSet)throws SQLException;
+    Slot fetchSlot(ResultSet resultSet) throws SQLException;
 
 }
