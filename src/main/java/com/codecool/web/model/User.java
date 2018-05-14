@@ -1,5 +1,6 @@
 package com.codecool.web.model;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public final class User extends AbstractModel {
@@ -7,7 +8,7 @@ public final class User extends AbstractModel {
     private final String name;
     private final String email;
     private Role role;
-
+    private ArrayList<Schedule> schedules;
 
     //CONSTRUCTOR
     public User(int id, String name, String email, Role role) {

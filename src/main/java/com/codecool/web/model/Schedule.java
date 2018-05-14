@@ -3,15 +3,13 @@ package com.codecool.web.model;
 public class Schedule extends AbstractModel {
     private int user_id;
     private String name;
-    private int col_id;
 
 
     //CONSTRUCTOR
-    public Schedule(int id, int user_id, String name, int col_id) {
+    public Schedule(int id, int user_id, String name) {
         super(id);
         this.user_id = user_id;
         this.name = name;
-        this.col_id = col_id;
     }
 
 
@@ -24,7 +22,5 @@ public class Schedule extends AbstractModel {
         return name;
     }
 
-    public int getCol_id() {
-        return col_id;
-    }
+
 }
