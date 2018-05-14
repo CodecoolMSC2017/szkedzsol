@@ -69,6 +69,7 @@ function appendSchedules(schedules) {
 }
 
 function onSchedulesLoad(schedules) {
+console.log(schedules);
     schedulesTableEl = document.getElementById('schedules');
     schedulesTableBodyEl = schedulesTableEl.querySelector('tbody');
 

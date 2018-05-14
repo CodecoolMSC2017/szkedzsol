@@ -34,6 +34,7 @@ public class SchedulesServlet extends AbstractServlet{
 
             req.setAttribute("user", user);
             req.setAttribute("schedules", scheduleList);
+            sendMessage(resp, 200, scheduleList);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ServiceException e) {

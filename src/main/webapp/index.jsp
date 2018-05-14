@@ -75,11 +75,9 @@
         <tbody>
         </tbody>
     </table>
-    <h2>Add new shop</h2>
-    <form id="schedule-form" onsubmit="return false;">
-        <input type="text" name="name">
-        <button onclick="onScheduleAddClicked();">Add</button>
-    </form>
+    <br>
+    <button onclick="onScheduleAddClicked();">Add New Schedule</button>
+    <br>
 </div>
 <div id="schedule-content" class="hidden content">
     <h1>Shop</h1>
