@@ -118,6 +118,12 @@ function onLoad() {
     const logoutButtonEl = document.getElementById('logout-button');
     logoutButtonEl.addEventListener('click', onLogoutButtonClicked);
 
+    const tologinButtonEl = document.getElementById('tologin-button');
+    tologinButtonEl.addEventListener('click', toLoginButtonClick);
+
+    const toregisterButtonEl = document.getElementById('toregister-button');
+    toregisterButtonEl.addEventListener('click', toRegisterButtonClick);
+
     if (hasAuthorization()) {
         onProfileLoad(getAuthorization());
     }

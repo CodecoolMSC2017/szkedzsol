@@ -33,18 +33,26 @@
 <div id="register-content" class="content">
     <h1>Register</h1>
     <form id="register-form" onsubmit="return false;">
+        <p>Email</p>
         <input type="text" name="email">
+        <p>Name</p>
         <input type="text" name="name">
         <button id="register-button">Sign up</button>
     </form>
+    <br>
+    <button id="tologin-button">Already registered</button>
 </div>
 <div id="login-content" class="hidden content">
     <h1>Login</h1>
     <form id="login-form" onsubmit="return false;">
+        <p>Email</p>
         <input type="text" name="email">
+        <p>Name</p>
         <input type="text" name="name">
-        <button id="login-button">Login</button>
+        <button id="login-button">Sign in</button>
     </form>
+    <br>
+    <button id="toregister-button">Sign up</button>
 </div>
 <div id="profile-content" class="hidden content">
     <h1>Profile</h1>

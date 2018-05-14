@@ -26,3 +26,8 @@ function onRegisterButtonClick() {
     xhr.open('POST', 'register');
     xhr.send(params);
 }
+
+function toLoginButtonClick() {
+    clearMessages();
+    showContents(['login-content']);
+}
