@@ -100,10 +100,13 @@
     </table>
     <h2>Add new Task</h2>
     <form id="task-form" onsubmit="return false;">
+        <p>Task Name</p>
         <input type="text" name="name">
-        <input type="range" min="0" max="100" name="description">
+        <p>Task Description</p>
+        <input type="text" name="description">
         <button onclick="onTaskAddClicked();">Add</button>
     </form>
+    <br>
 </div>
 <div id="task-content" class="hidden content">
     <h1>Coupon</h1>
