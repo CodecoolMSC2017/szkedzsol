@@ -11,6 +11,8 @@ let taskContentDivEl;
 let tasksContentDivEl;
 let scheduleContentDivEl;
 let schedulesContentDivEl;
+let scheduleTasksContentDivEl;
+let taskListDropDivEl;
 let backToProfileContentDivEl;
 let logoutContentDivEl;
 
@@ -106,6 +108,8 @@ function onLoad() {
     tasksContentDivEl = document.getElementById('tasks-content');
     scheduleContentDivEl = document.getElementById('schedule-content');
     schedulesContentDivEl = document.getElementById('schedules-content');
+    scheduleTasksContentDivEl = document.getElementById('schedule-tasks-content');
+    taskListDropDivEl = document.getElementById('task-list-drop');
     backToProfileContentDivEl = document.getElementById('back-to-profile-content');
     logoutContentDivEl = document.getElementById('logout-content');
 

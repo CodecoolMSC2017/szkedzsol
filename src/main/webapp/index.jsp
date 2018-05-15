@@ -93,8 +93,19 @@
     <h1>Schedule</h1>
     <p>ID: <span id="schedule-id"></span></p>
     <p>Name: <span id="schedule-name"></span></p>
-
+    <br><br>
+    <form id="how-many" onsubmit="return false;">
+    <p>How many days do you need in your schedule?</p>
+    <input type="number" min="0" max="7" name="howMany">
+    <button onclick="onHowManyColClicked();">Add Days</button>
+    </form>
 </div>
+
+<div id="schedule-tasks-content" class="hidden content">
+    <button id="load-tasks">Load</button>
+    <div id="task-list-drop"></div><br><br>
+</div>
+
 <div id="tasks-content" class="hidden content">
     <h1>Tasks</h1>
     <table id="tasks">

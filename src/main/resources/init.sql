@@ -68,4 +68,7 @@ INSERT INTO slot(col_id,start, stop) VALUES
 
 INSERT INTO task(name, description, user_id) VALUES
     ('reggel', 'kutya simogatas', 1),
+    ('napi rutin', 'banat kodolas', 1),
+    ('hello', 'hello world', 1),
+    ('kötelezo rossz', 'e-mailek szortirozasa', 1),
     ('este', 'kutya setaltatas', 2);
