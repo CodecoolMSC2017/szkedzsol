@@ -1,31 +1,6 @@
 let couponId;
 
-function onCouponShopsAddResponse() {
-    clearMessages();
-    if (this.status === OK) {
-        onCouponLoad(JSON.parse(this.responseText));
-    } else {
-        onOtherResponse(couponContentDivEl, this);
-    }
-}
 
-function onCouponShopsAddClicked() {
-    const couponShopsForm = document.forms['coupon-shops-form'];
-
-    const shopIdsSelectEl = couponShopsForm.querySelector('select[name="shopIds"]');
-
-    const params = new URLSearchParams();
-    params.append('id', couponId);
-    for (let i = 0; i < shopIdsSelectEl.selectedOptions.length; i++) {
-        params.append('shopIds', shopIdsSelectEl.selectedOptions[i].value);
-    }
-
-    const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onCouponShopsAddResponse);
-    xhr.addEventListener('error', onNetworkError);
-    xhr.open('POST', 'protected/coupon');
-    xhr.send(params);
-}
 
 function createTask(task) {
     const liEl = document.createElement('li');
@@ -74,9 +49,6 @@ function onTaskLoad(task) {
     taskIdSpandEl.textContent = task.id;
     taskNameSpanEl.textContent = task.name
     taskDescriptionSpanEl.textContent = task.description;
-
-    addCouponShops(couponDto.couponShops);
-    addAllShops(couponDto.allShops);
 }
 
 function onTaskResponse() {

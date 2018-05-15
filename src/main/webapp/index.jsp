@@ -104,6 +104,9 @@
 <div id="schedule-tasks-content" class="hidden content">
     <button id="load-tasks">Load</button>
     <div id="task-list-drop"></div><br><br>
+    <br>
+    <button float:right onclick="readDropZone()">Get Object Data</button>
+    <button float:right onclick="clearDropZone()">Clear</button>
 </div>
 
 <div id="tasks-content" class="hidden content">
@@ -119,8 +122,9 @@
         <tbody>
         </tbody>
     </table>
-    <h2>Add new Task</h2>
+    <br><br><br><br><br><br><br><br>
     <form id="task-form" onsubmit="return false;">
+        <h2>Add new Task</h2>
         <p>Task Name</p>
         <input type="text" name="name" required>
         <p>Task Description</p>
