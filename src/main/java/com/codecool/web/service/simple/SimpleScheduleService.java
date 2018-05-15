@@ -28,7 +28,7 @@ public class SimpleScheduleService implements ScheduleService {
     @Override
     public void addSchedule(int userId, String scheduleTitle) throws SQLException, ServiceException {
         try {
-            if(scheduleTitle == null || scheduleTitle.equals("")) {
+            if (scheduleTitle == null || scheduleTitle.equals("")) {
                 throw new ServiceException("Incorrect name");
             } else {
                 scheduleDao.insertSchedule(userId, scheduleTitle);
@@ -39,8 +39,8 @@ public class SimpleScheduleService implements ScheduleService {
     }
 
     @Override
-    public Schedule getSceduleById(int scheduleId) throws SQLException, ServiceException {
-        try{
+    public Schedule getScheduleById(int scheduleId) throws SQLException, ServiceException {
+        try {
             return scheduleDao.findByScheduleId(scheduleId);
         } catch (IllegalArgumentException ex) {
             throw new ServiceException(ex.getMessage());
