@@ -24,14 +24,14 @@ function onScheduleAddResponse() {
 }
 
 function onScheduleAddClicked() {
-    const scheduleFormEl = document.forms['schedule-form'];
+    const scheduleFormEl = document.forms['add-schedule-form'];
 
-    const nameInputEl = scheduleFormEl.querySelector('input[name="name"]');
+    const nameInputEl = scheduleFormEl.querySelector('input[name="scheduleTitle"]');
 
     const name = nameInputEl.value;
 
     const params = new URLSearchParams();
-    params.append('name', name);
+    params.append('scheduleTitle', name);
 
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onScheduleAddResponse);

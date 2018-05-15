@@ -57,10 +57,12 @@ public class SchedulesServlet extends AbstractServlet{
             String scheduleTitle = req.getParameter("scheduleTitle");
 
             scheduleService.addSchedule(userId, scheduleTitle);
-
+            doGet(req,resp);
         } catch (SQLException ex) {
             handleSqlError(resp, ex);
         } catch (ServiceException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
             e.printStackTrace();
         }
     }

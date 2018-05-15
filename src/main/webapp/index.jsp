@@ -81,13 +81,16 @@
         </tbody>
     </table>
     <br>
-    <button onclick="onScheduleAddClicked();">Add New Schedule</button>
+    <form id="add-schedule-form" onsubmit="return false;">
+    <h1>Add</h1>
+    <p>Name</p>
+    <input type="text" name="scheduleTitle"><br>
     <br>
+    <button onclick="onScheduleAddClicked(); onSchedulesClicked();">Add New Schedule</button>
+    </form>
 </div>
-<div id="schedule-content" class="hidden content">
-    <h1>Shop</h1>
-    <p>ID: <span id="schedule-id"></span></p>
-    <p>Name: <span id="schedule-name"></span></p>
+<div id="schedule-form" class="hidden content">
+
 </div>
 <div id="tasks-content" class="hidden content">
     <h1>Tasks</h1>
