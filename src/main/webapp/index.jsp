@@ -119,7 +119,7 @@
     <br>
 </div>
 <div id="task-content" class="hidden content">
-    <h1>Coupon</h1>
+    <h1>Task</h1>
     <p>ID: <span id="task-id"></span></p>
     <p>Name: <span id="task-name"></span></p>
     <p>Description: <span id="task-description"></span></p>
