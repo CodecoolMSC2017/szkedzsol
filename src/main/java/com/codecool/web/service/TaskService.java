@@ -9,4 +9,6 @@ import java.util.List;
 public interface TaskService {
 
     List<Task> findByUserId(int userId) throws SQLException, ServiceException;
+
+    void addTask(String description, int userId)throws  SQLException, ServiceException;
 }

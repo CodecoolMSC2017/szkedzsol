@@ -1,7 +1,7 @@
-let couponsTableEl;
-let couponsTableBodyEl;
+let tasksTableEl;
+let tasksTableBodyEl;
 
-function onTaksClicked() {
+function onTaskClicked() {
     const taskId = this.dataset.taskId;
 
     const params = new URLSearchParams();
@@ -17,7 +17,7 @@ function onTaksClicked() {
 function onTaskAddResponse() {
     clearMessages();
     if (this.status === OK) {
-        appendCoupon(JSON.parse(this.responseText));
+        appendTask(JSON.parse(this.responseText));
     } else {
         onOtherResponse(tasksContentDivEl, this);
     }
@@ -57,13 +57,13 @@ function appendTask(task) {
     nameTdEl.appendChild(aEl);
 
     const descriptionTdEl = document.createElement('td');
-    descriptionTdEl.textContent = task.percentage;
+    descriptionTdEl.textContent = task.description;
 
     const trEl = document.createElement('tr');
     trEl.appendChild(idTdEl);
     trEl.appendChild(nameTdEl);
     trEl.appendChild(descriptionTdEl);
-    couponsTableBodyEl.appendChild(trEl);
+    tasksTableBodyEl.appendChild(trEl);
 }
 
 function appendTasks(tasks) {

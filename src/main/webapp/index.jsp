@@ -108,7 +108,7 @@
         <input type="text" name="name">
         <p>Task Description</p>
         <input type="text" name="description">
-        <button onclick="onTaskAddClicked();">Add</button>
+        <button onclick="onTaskAddClicked();onTasksClicked();">Add</button>
     </form>
     <br>
 </div>

@@ -13,7 +13,7 @@ function onCouponShopsAddClicked() {
     const couponShopsForm = document.forms['coupon-shops-form'];
 
     const shopIdsSelectEl = couponShopsForm.querySelector('select[name="shopIds"]');
-    
+
     const params = new URLSearchParams();
     params.append('id', couponId);
     for (let i = 0; i < shopIdsSelectEl.selectedOptions.length; i++) {
@@ -27,13 +27,13 @@ function onCouponShopsAddClicked() {
     xhr.send(params);
 }
 
-function createCouponShop(shop) {
+function createTask(task) {
     const liEl = document.createElement('li');
-    liEl.textContent = `${shop.id} - ${shop.name}`;
+    liEl.textContent = `${task.id} - ${task.name} - ${task.description}`;
     return liEl;
 }
 
-function addCouponShops(shops) {
+function showTaskContent(tasks) {
     const couponShopsSpanEl = document.getElementById('coupon-shops');
 
     removeAllChildren(couponShopsSpanEl);
@@ -44,7 +44,7 @@ function addCouponShops(shops) {
         const ulEl = document.createElement('ul');
         for (let i= 0; i < shops.length; i++) {
             const shop = shops[i];
-            ulEl.appendChild(createCouponShop(shop));
+            ulEl.appendChild(createTask(task));
         }
         couponShopsSpanEl.appendChild(ulEl);
     }
@@ -66,26 +66,24 @@ function addAllShops(shops) {
     }
 }
 
-function onCouponLoad(couponDto) {
-    couponId = couponDto.coupon.id;
+function onTaskLoad(task) {
+    const taskIdSpandEl = document.getElementById('task-id');
+    const taskNameSpanEl = document.getElementById('task-name');
+    const taskDescriptionSpanEl = document.getElementById('task-description');
 
-    const couponIdSpandEl = document.getElementById('coupon-id');
-    const couponNameSpanEl = document.getElementById('coupon-name');
-    const couponPercentageSpanEl = document.getElementById('coupon-percentage');
-
-    couponIdSpandEl.textContent = couponDto.coupon.id;
-    couponNameSpanEl.textContent = couponDto.coupon.name;
-    couponPercentageSpanEl.textContent = couponDto.coupon.percentage;
+    taskIdSpandEl.textContent = task.id;
+    taskNameSpanEl.textContent = task.name
+    taskDescriptionSpanEl.textContent = task.description;
 
     addCouponShops(couponDto.couponShops);
     addAllShops(couponDto.allShops);
 }
 
-function onCouponResponse() {
+function onTaskResponse() {
     if (this.status === OK) {
         clearMessages();
-        showContents(['coupon-content', 'back-to-profile-content', 'logout-content']);
-        onCouponLoad(JSON.parse(this.responseText));
+        showContents(['task-content', 'back-to-profile-content', 'logout-content']);
+        onTaskLoad(JSON.parse(this.responseText));
     } else {
         onOtherResponse(couponsContentDivEl, this);
     }
