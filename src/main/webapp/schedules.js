@@ -45,6 +45,7 @@ function appendSchedule(schedule) {
     idTdEl.textContent = schedule.id;
 
     const aEl = document.createElement('a');
+    aEl.setAttribute("id", schedule.id);
     aEl.textContent = schedule.name;
     aEl.href = 'javascript:void(0);';
     aEl.dataset.scheduleId = schedule.id;
@@ -69,7 +70,6 @@ function appendSchedules(schedules) {
 }
 
 function onSchedulesLoad(schedules) {
-console.log(schedules);
     schedulesTableEl = document.getElementById('schedules');
     schedulesTableBodyEl = schedulesTableEl.querySelector('tbody');
 

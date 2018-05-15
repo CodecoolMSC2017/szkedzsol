@@ -89,7 +89,10 @@
     <button onclick="onScheduleAddClicked(); onSchedulesClicked();">Add New Schedule</button>
     </form>
 </div>
-<div id="schedule-form" class="hidden content">
+<div id="schedule-content" class="hidden content">
+    <h1>Schedule</h1>
+    <p>ID: <span id="schedule-id"></span></p>
+    <p>Name: <span id="schedule-name"></span></p>
 
 </div>
 <div id="tasks-content" class="hidden content">

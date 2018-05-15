@@ -37,4 +37,13 @@ public class SimpleScheduleService implements ScheduleService {
             throw new ServiceException(ex.getMessage());
         }
     }
+
+    @Override
+    public Schedule getSceduleById(int scheduleId) throws SQLException, ServiceException {
+        try{
+            return scheduleDao.findByScheduleId(scheduleId);
+        } catch (IllegalArgumentException ex) {
+            throw new ServiceException(ex.getMessage());
+        }
+    }
 }

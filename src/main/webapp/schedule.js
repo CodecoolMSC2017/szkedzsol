@@ -1,17 +1,17 @@
-function onShopLoad(shop) {
-    const shopIdSpandEl = document.getElementById('shop-id');
-    const shopNameSpanEl = document.getElementById('shop-name');
+function onScheduleLoad(schedule) {
+    const scheduleIdSpandEl = document.getElementById('schedule-id');
+    const scheduleNameSpanEl = document.getElementById('schedule-name');
 
-    shopIdSpandEl.textContent = shop.id;
-    shopNameSpanEl.textContent = shop.name;
+    scheduleIdSpandEl.textContent = schedule.id;
+    scheduleNameSpanEl.textContent = schedule.name;
 }
 
-function onShopResponse() {
+function onScheduleResponse() {
     if (this.status === OK) {
         clearMessages();
-        showContents(['shop-content', 'back-to-profile-content', 'logout-content']);
-        onShopLoad(JSON.parse(this.responseText));
+        showContents(['schedule-content', 'back-to-profile-content', 'logout-content']);
+        onScheduleLoad(JSON.parse(this.responseText));
     } else {
-        onOtherResponse(shopsContentDivEl, this);
+        onOtherResponse(schedulesContentDivEl, this);
     }
 }

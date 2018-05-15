@@ -21,5 +21,5 @@ public interface ScheduleDao {
 
     Schedule fetchSchedule(ResultSet resultSet) throws SQLException;
 
-
+    Schedule findByScheduleId(int scheduleId) throws SQLException;
 }
