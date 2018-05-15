@@ -122,14 +122,7 @@
     <h1>Coupon</h1>
     <p>ID: <span id="task-id"></span></p>
     <p>Name: <span id="task-name"></span></p>
-    <p>Percentage: <span id="task-description"></span>%</p>
-    <p>Shops: <span id="coupon-shops"></span></p>
-    <h2>Add to shops</h2>
-    <form id="coupon-shops-form" onsubmit="return false">
-        <select name="shopIds" multiple>
-        </select>
-        <button onclick="onCouponShopsAddClicked();">Add</button>
-    </form>
+    <p>Description: <span id="task-description"></span></p>
 </div>
 <div id="back-to-profile-content" class="hidden content">
     <button onclick="onBackToProfileClicked();">Back to profile</button>

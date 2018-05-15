@@ -38,4 +38,13 @@ public class SimpleTaskService implements TaskService {
             throw new ServiceException(ex.getMessage());
         }
     }
+
+    @Override
+    public Task getTaskById(int taskId, int userId) throws SQLException, ServiceException {
+        try{
+            return taskDao.findByUserAndTaskId(taskId, userId);
+        } catch (IllegalArgumentException ex) {
+            throw new ServiceException(ex.getMessage());
+        }
+    }
 }

@@ -62,4 +62,18 @@ public class DatabaseTaskDao extends AbstractDao implements TaskDao {
             statement.executeUpdate();
         }
     }
+
+    @Override
+    public Task findByUserAndTaskId(int taskId, int userId) throws SQLException {
+        String sql = "SELECT id, name, description, user_id FROM task WHERE id = ? AND user_id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, taskId);
+            statement.setInt(2, userId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return fetchTasks(resultSet);
+            }
+        }
+        return null;
+    }
 }
