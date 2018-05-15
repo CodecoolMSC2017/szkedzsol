@@ -16,7 +16,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 @WebServlet("/protected/schedule")
-public class ScheduleServlet  extends AbstractServlet{
+public class ScheduleServlet extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -28,14 +28,12 @@ public class ScheduleServlet  extends AbstractServlet{
             int scheduleId = Integer.parseInt(strId);
             System.out.println(scheduleId);
 
-            Schedule schedule = scheduleService.getSceduleById(scheduleId);
+            Schedule schedule = scheduleService.getScheduleById(scheduleId);
             System.out.println(schedule.getId());
 
             req.setAttribute("schedule", schedule);
             sendMessage(resp, 200, schedule);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ServiceException e) {
+        } catch (SQLException | ServiceException e) {
             e.printStackTrace();
         }
     }

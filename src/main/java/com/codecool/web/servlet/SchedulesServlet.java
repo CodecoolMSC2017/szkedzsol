@@ -23,7 +23,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet("/protected/schedules")
-public class SchedulesServlet extends AbstractServlet{
+public class SchedulesServlet extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,9 +39,7 @@ public class SchedulesServlet extends AbstractServlet{
             req.setAttribute("user", user);
             req.setAttribute("schedules", scheduleList);
             sendMessage(resp, 200, scheduleList);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ServiceException e) {
+        } catch (SQLException | ServiceException e) {
             e.printStackTrace();
         }
     }
@@ -57,7 +55,7 @@ public class SchedulesServlet extends AbstractServlet{
             String scheduleTitle = req.getParameter("scheduleTitle");
 
             scheduleService.addSchedule(userId, scheduleTitle);
-            doGet(req,resp);
+            doGet(req, resp);
         } catch (SQLException ex) {
             handleSqlError(resp, ex);
         } catch (ServiceException se) {
