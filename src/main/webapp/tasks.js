@@ -39,7 +39,7 @@ function onTaskAddClicked() {
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onTaskAddResponse);
     xhr.addEventListener('error', onNetworkError);
-    xhr.open('POST', 'protected/tasks');
+    xhr.open('POST', 'protected/tasks', false);  // with this 'false' it works but maybe it's not the best solution.
     xhr.send(params);
 }
 
