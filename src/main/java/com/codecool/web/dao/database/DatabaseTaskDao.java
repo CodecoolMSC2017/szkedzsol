@@ -32,15 +32,16 @@ public class DatabaseTaskDao extends AbstractDao implements TaskDao {
 
     public Task fetchTasks(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("id");
+        String name = resultSet.getString("name");
         String description = resultSet.getString("description");
         int user_id = resultSet.getInt("user_id");
-        return new Task(id, description, user_id);
+        return new Task(id, name, description, user_id);
     }
 
     @Override
     public List<Task> findByUserId(int userId) throws SQLException {
         List<Task> taskList = new ArrayList<>();
-        String sql = "SELECT id, description, user_id FROM task WHERE user_id = ?";
+        String sql = "SELECT id, name, description, user_id FROM task WHERE user_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, userId);
             ResultSet resultSet = statement.executeQuery();
@@ -52,11 +53,12 @@ public class DatabaseTaskDao extends AbstractDao implements TaskDao {
     }
 
     @Override
-    public void insertTask(String description, int userId) throws SQLException {
-        String sql = "INSERT INTO task(description, user_id) VALUES (?, ?);";
+    public void insertTask(String name, String description, int userId) throws SQLException {
+        String sql = "INSERT INTO task(name, description, user_id) VALUES (?, ?, ?);";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, description);
-            statement.setInt(2, userId);
+            statement.setString(1, name);
+            statement.setString(2, description);
+            statement.setInt(3, userId);
             statement.executeUpdate();
         }
     }

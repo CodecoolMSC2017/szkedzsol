@@ -32,6 +32,7 @@ CREATE TABLE slot (
 );
 CREATE TABLE task (
     id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
     description TEXT NOT NULL,
     user_id INTEGER NOT NULL,
     FOREIGN KEY(user_id)REFERENCES users(id)
@@ -65,6 +66,6 @@ INSERT INTO slot(col_id,start, stop) VALUES
     (2,3,4);
 
 
-INSERT INTO task(description, user_id) VALUES
-    ('kutya simogatas', 1),
-    ('kutya setaltatas', 2);
+INSERT INTO task(name, description, user_id) VALUES
+    ('reggel', 'kutya simogatas', 1),
+    ('este', 'kutya setaltatas', 2);

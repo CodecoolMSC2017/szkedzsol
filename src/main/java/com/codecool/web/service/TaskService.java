@@ -10,5 +10,5 @@ public interface TaskService {
 
     List<Task> findByUserId(int userId) throws SQLException, ServiceException;
 
-    void addTask(String description, int userId)throws  SQLException, ServiceException;
+    void addTask(String name, String description, int userId)throws  SQLException, ServiceException;
 }

@@ -8,27 +8,29 @@ import com.codecool.web.service.exception.ServiceException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SimpleTaskService implements TaskService{
+public class SimpleTaskService implements TaskService {
 
     private final TaskDao taskDao;
 
-    public SimpleTaskService (TaskDao taskDao) {this.taskDao = taskDao;}
+    public SimpleTaskService(TaskDao taskDao) {
+        this.taskDao = taskDao;
+    }
 
 
     @Override
     public List<Task> findByUserId(int userId) throws SQLException, ServiceException {
-        try{
+        try {
             return taskDao.findByUserId(userId);
-        }catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             throw new ServiceException(ex.getMessage());
         }
     }
 
     @Override
-    public void addTask(String description, int userId) throws SQLException, ServiceException {
-        try{
-            taskDao.insertTask(description,userId);
-        }catch (IllegalArgumentException ex){
+    public void addTask(String name, String description, int userId) throws SQLException, ServiceException {
+        try {
+            taskDao.insertTask(name, description, userId);
+        } catch (IllegalArgumentException ex) {
             throw new ServiceException(ex.getMessage());
         }
     }
