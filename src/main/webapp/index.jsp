@@ -36,9 +36,9 @@
     <h1>Register</h1>
     <form id="register-form" onsubmit="return false;">
         <p>Email</p>
-        <input type="text" name="email">
+        <input type="text" name="email" required>
         <p>Name</p>
-        <input type="text" name="name">
+        <input type="text" name="name" required>
         <br><br>
         <button id="register-button" class="mainButton">Sign up</button>
     </form>
@@ -49,9 +49,9 @@
     <h1>Login</h1>
     <form id="login-form" onsubmit="return false;">
         <p>Email</p>
-        <input type="text" name="email">
+        <input type="text" name="email" required>
         <p>Name</p>
-        <input type="text" name="name">
+        <input type="text" name="name" required>
         <br><br>
         <button id="login-button" class="mainButton">Sign in</button>
     </form>
@@ -84,7 +84,7 @@
     <form id="add-schedule-form" onsubmit="return false;">
     <h1>Add</h1>
     <p>Name</p>
-    <input type="text" name="scheduleTitle"><br>
+    <input type="text" name="scheduleTitle" required><br>
     <br>
     <button onclick="onScheduleAddClicked(); onSchedulesClicked();">Add New Schedule</button>
     </form>
@@ -108,9 +108,9 @@
     <h2>Add new Task</h2>
     <form id="task-form" onsubmit="return false;">
         <p>Task Name</p>
-        <input type="text" name="name">
+        <input type="text" name="name" required>
         <p>Task Description</p>
-        <input type="text" name="description">
+        <input type="text" name="description" required>
         <button onclick="onTaskAddClicked();onTasksClicked();">Add</button>
     </form>
     <br>

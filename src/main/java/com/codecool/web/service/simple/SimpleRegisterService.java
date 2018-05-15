@@ -17,6 +17,9 @@ public class SimpleRegisterService implements RegisterService {
     @Override
     public void registerUser(String email, String name) throws SQLException, ServiceException {
         try {
+            if(email == null || email.equals("") || name == null || name.equals("")) {
+                throw new ServiceException("Bad register");
+            }
             userDao.addUser(email, name);
         } catch (IllegalArgumentException ex) {
             throw new ServiceException(ex.getMessage());

@@ -32,8 +32,8 @@ public class RegisterServlet extends AbstractServlet {
 
         } catch (SQLException ex) {
             handleSqlError(resp, ex);
-        } catch (ServiceException e) {
-            e.printStackTrace();
+        } catch (ServiceException se) {
+            sendMessage(resp, HttpServletResponse.SC_UNAUTHORIZED, se.getMessage());
         }
     }
 }
