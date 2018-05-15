@@ -58,8 +58,8 @@ public class TasksServlet extends AbstractServlet {
             doGet(req, resp);
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ServiceException e) {
-            e.printStackTrace();
+        } catch (ServiceException se) {
+            sendMessage(resp, HttpServletResponse.SC_UNAUTHORIZED, se.getMessage());
         }
     }
 }

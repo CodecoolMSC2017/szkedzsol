@@ -28,7 +28,11 @@ public class SimpleScheduleService implements ScheduleService {
     @Override
     public void addSchedule(int userId, String scheduleTitle) throws SQLException, ServiceException {
         try {
-            scheduleDao.insertSchedule(userId, scheduleTitle);
+            if(scheduleTitle == null || scheduleTitle.equals("")) {
+                throw new ServiceException("Incorrect name");
+            } else {
+                scheduleDao.insertSchedule(userId, scheduleTitle);
+            }
         } catch (IllegalArgumentException ex) {
             throw new ServiceException(ex.getMessage());
         }

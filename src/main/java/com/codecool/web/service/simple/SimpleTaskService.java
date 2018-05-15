@@ -29,7 +29,11 @@ public class SimpleTaskService implements TaskService {
     @Override
     public void addTask(String name, String description, int userId) throws SQLException, ServiceException {
         try {
-            taskDao.insertTask(name, description, userId);
+            if(name == null || name.equals("") || description == null || description.equals("")) {
+                throw new ServiceException("Incorrect name or descreption");
+            } else {
+                taskDao.insertTask(name, description, userId);
+            }
         } catch (IllegalArgumentException ex) {
             throw new ServiceException(ex.getMessage());
         }

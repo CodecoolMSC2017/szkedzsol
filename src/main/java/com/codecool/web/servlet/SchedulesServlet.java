@@ -60,8 +60,8 @@ public class SchedulesServlet extends AbstractServlet{
             doGet(req,resp);
         } catch (SQLException ex) {
             handleSqlError(resp, ex);
-        } catch (ServiceException e) {
-            e.printStackTrace();
+        } catch (ServiceException se) {
+            sendMessage(resp, HttpServletResponse.SC_UNAUTHORIZED, se.getMessage());
         } catch (ServletException e) {
             e.printStackTrace();
         }
