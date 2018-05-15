@@ -13,4 +13,6 @@ public interface TaskDao {
     Task fetchTasks(ResultSet resultSet) throws SQLException;
 
     List<Task> findByUserId(int userId) throws SQLException;
+
+    void insertTask(String description, int userId) throws SQLException;
 }
