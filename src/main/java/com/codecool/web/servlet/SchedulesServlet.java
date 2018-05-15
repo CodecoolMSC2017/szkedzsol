@@ -2,11 +2,15 @@ package com.codecool.web.servlet;
 
 
 import com.codecool.web.dao.ScheduleDao;
+import com.codecool.web.dao.UserDao;
 import com.codecool.web.dao.database.DatabaseScheduleDao;
+import com.codecool.web.dao.database.DatabaseUserDao;
 import com.codecool.web.model.Schedule;
 import com.codecool.web.model.User;
+import com.codecool.web.service.RegisterService;
 import com.codecool.web.service.ScheduleService;
 import com.codecool.web.service.exception.ServiceException;
+import com.codecool.web.service.simple.SimpleRegisterService;
 import com.codecool.web.service.simple.SimpleScheduleService;
 
 import javax.servlet.ServletException;
@@ -40,6 +44,24 @@ public class SchedulesServlet extends AbstractServlet{
         } catch (ServiceException e) {
             e.printStackTrace();
         }
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        try (Connection connection = getConnection(req.getServletContext())) {
+            ScheduleDao scheduleDao = new DatabaseScheduleDao(connection);
+            ScheduleService scheduleService = new SimpleScheduleService(scheduleDao);
+
+            User user = (User) req.getSession().getAttribute("user");
+            int userId = user.getId();
+            String scheduleTitle = req.getParameter("scheduleTitle");
+
+            scheduleService.addSchedule(userId, scheduleTitle);
+
+        } catch (SQLException ex) {
+            handleSqlError(resp, ex);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
     }
 }
