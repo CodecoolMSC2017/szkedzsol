@@ -119,6 +119,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>

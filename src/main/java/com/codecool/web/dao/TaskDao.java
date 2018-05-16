@@ -17,4 +17,6 @@ public interface TaskDao {
     void insertTask(String name, String description, int userId) throws SQLException;
 
     Task findByUserAndTaskId(int taskId, int userId) throws SQLException;
+
+    void deleteTask(int id) throws SQLException;
 }

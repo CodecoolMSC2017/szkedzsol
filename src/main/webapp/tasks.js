@@ -59,10 +59,20 @@ function appendTask(task) {
     const descriptionTdEl = document.createElement('td');
     descriptionTdEl.textContent = task.description;
 
+    const deletebuttonEl = document.createElement('button');
+    deletebuttonEl.textContent = 'X';
+    deletebuttonEl.value = task.id;
+    deletebuttonEl.addEventListener('click', onTaskDeleteClicked);
+
+    const deleteTdEl = document.createElement('td');
+    deleteTdEl.appendChild(deletebuttonEl);
+
     const trEl = document.createElement('tr');
+    trEl.id = task.id;
     trEl.appendChild(idTdEl);
     trEl.appendChild(nameTdEl);
     trEl.appendChild(descriptionTdEl);
+    trEl.appendChild(deleteTdEl);
     tasksTableBodyEl.appendChild(trEl);
 }
 
@@ -89,4 +99,17 @@ function onTasksResponse() {
     } else {
         onOtherResponse(tasksContentDivEl, this);
     }
+}
+
+function onTaskDeleteClicked() {
+    const taskTr = document.getElementById(this.value);
+
+    const data = JSON.stringify({"taskId": taskTr.id});
+
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', onTasksResponse);
+    xhr.addEventListener('error', onNetworkError);
+    xhr.open('DELETE', 'protected/tasks');
+    xhr.setRequestHeader("Content-type","application/json");
+    xhr.send(data);
 }
