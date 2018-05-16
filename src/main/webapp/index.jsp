@@ -15,6 +15,9 @@
         <c:url value="/schedules.js" var="schedulesScriptUrl"/>
         <c:url value="/task.js" var="taskScriptUrl"/>
         <c:url value="/tasks.js" var="tasksScriptUrl"/>
+
+        <c:url value="/users.js" var="usersScriptUrl"/>
+
         <c:url value="/back-to-profile.js" var="backToProfileScriptUrl"/>
         <c:url value="/logout.js" var="logoutScriptUrl"/>
         <link rel="stylesheet" type="text/css" href="${styleUrl}">
@@ -27,6 +30,7 @@
         <script src="${schedulesScriptUrl}"></script>
         <script src="${taskScriptUrl}"></script>
         <script src="${tasksScriptUrl}"></script>
+        <script src="${usersScriptUrl}"></script>
         <script src="${backToProfileScriptUrl}"></script>
         <script src="${logoutScriptUrl}"></script>
         <title>App</title>
@@ -142,6 +146,17 @@
 <div id="back-to-profile-content" class="hidden content">
     <button onclick="onBackToProfileClicked();">Back to profile</button>
 </div>
+
+<div id="users-content" class="hidden content">
+    <h1>Registered users:</h1>
+    <button onclick="onUsersClicked();">Registered Users</button>
+    <p id="users"></p>
+</div>
+<div id="back-to-profile-content" class="hidden content">
+    <button onclick="onBackToProfileClicked();">Back to profile</button>
+</div>
+
+
 <div id="logout-content" class="hidden content">
     <button id="logout-button">Logout</button>
 </div>
