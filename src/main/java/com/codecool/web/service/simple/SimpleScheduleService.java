@@ -46,4 +46,17 @@ public class SimpleScheduleService implements ScheduleService {
             throw new ServiceException(ex.getMessage());
         }
     }
+
+    @Override
+    public void deleteSchedule(int id) throws SQLException, ServiceException {
+        try {
+            if (id == 0) {
+                throw new ServiceException("Incorrect id");
+            } else {
+                scheduleDao.deleteSchedule(id);
+            }
+        } catch (IllegalArgumentException ex) {
+            throw new ServiceException(ex.getMessage());
+        }
+    }
 }

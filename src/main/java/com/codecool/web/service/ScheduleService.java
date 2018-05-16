@@ -13,4 +13,6 @@ public interface ScheduleService {
     void addSchedule(int userId, String scheduleTitle) throws SQLException, ServiceException;
 
     Schedule getScheduleById(int scheduleId) throws SQLException, ServiceException;
+
+    void deleteSchedule(int id) throws SQLException, ServiceException;
 }

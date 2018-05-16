@@ -79,6 +79,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -86,10 +87,7 @@
     </table>
     <br>
     <form id="add-schedule-form" onsubmit="return false;">
-    <h1>Add</h1>
-    <p>Name</p>
-    <input type="text" name="scheduleTitle" required><br>
-    <br>
+    <input type="text" name="scheduleTitle" placeholder="Schedule name" required><br>
     <button onclick="onScheduleAddClicked(); onSchedulesClicked();">Add New Schedule</button>
     </form>
 </div>
@@ -143,9 +141,6 @@
     <p>Name: <span id="task-name"></span></p>
     <p>Description: <span id="task-description"></span></p>
 </div>
-<div id="back-to-profile-content" class="hidden content">
-    <button onclick="onBackToProfileClicked();">Back to profile</button>
-</div>
 
 <div id="users-content" class="hidden content">
     <h1>Registered users:</h1>
@@ -164,6 +159,7 @@
     </table>
 </div>
 <div id="back-to-profile-content" class="hidden content">
+    <br>
     <button onclick="onBackToProfileClicked();">Back to profile</button>
 </div>
 

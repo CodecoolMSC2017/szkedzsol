@@ -36,8 +36,21 @@ function onScheduleAddClicked() {
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onScheduleAddResponse);
     xhr.addEventListener('error', onNetworkError);
-    xhr.open('POST', 'protected/schedules');
+    xhr.open('POST', 'protected/schedules', false);
     xhr.send(params);
+}
+
+function onScheduleDeleteClicked() {
+    const scheduleTr = document.getElementById(this.value);
+
+    const data = JSON.stringify({"scheduleId": scheduleTr.id});
+
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', onSchedulesResponse);
+    xhr.addEventListener('error', onNetworkError);
+    xhr.open('DELETE', 'protected/schedules');
+    xhr.setRequestHeader("Content-type","application/json");
+    xhr.send(data);
 }
 
 function appendSchedule(schedule) {
@@ -54,10 +67,21 @@ function appendSchedule(schedule) {
     const nameTdEl = document.createElement('td');
     nameTdEl.appendChild(aEl);
 
+    const deletebuttonEl = document.createElement('button');
+    deletebuttonEl.textContent = 'X';
+    deletebuttonEl.value = schedule.id;
+    deletebuttonEl.addEventListener('click', onScheduleDeleteClicked);
+
+    const deleteTdEl = document.createElement('td');
+    deleteTdEl.appendChild(deletebuttonEl);
+
     const trEl = document.createElement('tr');
+    trEl.id = schedule.id;
     trEl.appendChild(idTdEl);
     trEl.appendChild(nameTdEl);
+    trEl.appendChild(deleteTdEl);
     schedulesTableBodyEl.appendChild(trEl);
+
 }
 
 function appendSchedules(schedules) {
