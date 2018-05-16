@@ -150,11 +150,18 @@
 <div id="users-content" class="hidden content">
     <h1>Registered users:</h1>
     <button onclick="onUsersClicked();">Registered Users</button>
-    <p id="users"></p>
+    <table id="users">
         <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
         </thead>
         <tbody>
         </tbody>
+    </table>
 </div>
 <div id="back-to-profile-content" class="hidden content">
     <button onclick="onBackToProfileClicked();">Back to profile</button>

@@ -3,7 +3,7 @@ let usersTableBodyEl;
 
 function onUsersClicked() {
     const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onUsersAddResponse);
+    xhr.addEventListener('load', onUsersResponse);
     xhr.addEventListener('error', onNetworkError);
     xhr.open('GET', 'protected/users');
     xhr.send();
@@ -19,19 +19,17 @@ function onUsersAddResponse() {
 }
 
 function appendUser(user) {
-    for (let i=0; i < user.length; i++) {
-        let usr = user[i];
         const idTdEl = document.createElement('td');
-        idTdEl.textContent = usr.id;
+        idTdEl.textContent = user.id;
 
         const nameTdEl = document.createElement('td');
-        nameTdEl.textContent = usr.name;
+        nameTdEl.textContent = user.name;
 
         const emailTdEl = document.createElement('td');
-        emailTdEl.textContent = usr.email;
+        emailTdEl.textContent = user.email;
 
         const roleTdEl = document.createElement('td');
-        roleTdEl.textContent = usr.role;
+        roleTdEl.textContent = user.role;
 
 
         const trEl = document.createElement('tr');
@@ -40,7 +38,6 @@ function appendUser(user) {
         trEl.appendChild(emailTdEl);
         trEl.appendChild(roleTdEl);
         usersTableBodyEl.appendChild(trEl);
-    }
 }
 
 function appendUsers(users) {
