@@ -151,6 +151,10 @@
     <h1>Registered users:</h1>
     <button onclick="onUsersClicked();">Registered Users</button>
     <p id="users"></p>
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
 </div>
 <div id="back-to-profile-content" class="hidden content">
     <button onclick="onBackToProfileClicked();">Back to profile</button>
