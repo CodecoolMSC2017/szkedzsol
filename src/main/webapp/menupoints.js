@@ -1,6 +1,6 @@
 
 function createMenu() {
-    const divEl = document.getElementById("menu");
+    const divEl = document.getElementById("menu-content");
     const ulEl = document.createElement('ul');
     const liEl = document.createElement('li');
     const liEl2 = document.createElement('li');

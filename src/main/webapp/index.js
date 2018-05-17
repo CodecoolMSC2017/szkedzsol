@@ -101,7 +101,7 @@ function setUnauthorized() {
 }
 
 function hideMenuContent() {
-    const menu = document.getElementById('menu');
+    const menu = document.getElementById('menu-content');
     removeAllChildren(menu);
 }
 

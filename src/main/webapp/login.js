@@ -3,7 +3,7 @@ function onLoginResponse() {
         const user = JSON.parse(this.responseText);
         setAuthorization(user);
         createMenu();
-        showContents(['']);
+        onProfileLoad();
 
     } else {
         onOtherResponse(loginContentDivEl, this);

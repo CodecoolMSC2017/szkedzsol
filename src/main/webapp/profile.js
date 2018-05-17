@@ -16,11 +16,11 @@ function onTasksClicked() {
 
 function onProfileLoad() {
     clearMessages();
-    showContents(['profile-content']);
 
     const userEmailSpandEl = document.getElementById('user-email');
     const userNameSpanEl = document.getElementById('user-name');
 
     userEmailSpandEl.textContent = getAuthorization().email;
     userNameSpanEl.textContent = getAuthorization().name;
+    showContents(['profile-content']);
 }
