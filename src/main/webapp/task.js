@@ -35,20 +35,16 @@ function onTaskModifyClicked() {
 
     const divEl = document.getElementById('task-content');
     const pEls = divEl.getElementsByTagName('p');
-
     const id = pEls[0].children[0].innerHTML;
 
-    const params2 = new URLSearchParams();
-    params2.append('id', id);
+    const scheduleTr = document.getElementById(this.value);
 
-    const params1 = new URLSearchParams();
-    params1.append('id', id);
-    params1.append('name', name);
-    params1.append('description', description);
+    const data = JSON.stringify({"taskId" : id, "taskName" : name, "taskDescription" : description});
 
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onTaskResponse);
-        xhr.addEventListener('error', onNetworkError);
-        xhr.open('POST', 'protected/task', false);
-        xhr.send(params1);
+    xhr.addEventListener('error', onNetworkError);
+    xhr.open('PUT', 'protected/task');
+    xhr.setRequestHeader("Content-type","application/json");
+    xhr.send(data);
 }
