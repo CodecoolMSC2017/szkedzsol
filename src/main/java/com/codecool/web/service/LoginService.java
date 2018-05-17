@@ -7,5 +7,5 @@ import java.sql.SQLException;
 
 public interface LoginService {
 
-    User loginUser(String email) throws SQLException, ServiceException;
+    User loginUser(String email, String name) throws SQLException, ServiceException;
 }

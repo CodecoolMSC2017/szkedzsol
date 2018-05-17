@@ -14,10 +14,10 @@ function onLoginButtonClicked() {
     const loginFormEl = document.forms['login-form'];
 
     const emailInputEl = loginFormEl.querySelector('input[name="email"]');
-    const passwordInputEl = loginFormEl.querySelector('input[name="name"]');
+    const nameInputEl = loginFormEl.querySelector('input[name="name"]');
 
     const email = emailInputEl.value;
-    const password = passwordInputEl.value;
+    const name = nameInputEl.value;
 
     const params = new URLSearchParams();
     params.append('email', email);
