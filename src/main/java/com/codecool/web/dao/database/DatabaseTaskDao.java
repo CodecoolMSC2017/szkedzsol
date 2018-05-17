@@ -93,4 +93,59 @@ public class DatabaseTaskDao extends AbstractDao implements TaskDao {
             connection.setAutoCommit(autoCommit);
         }
     }
+
+    @Override
+    public void modifyTaskName(int id, String name) throws SQLException {
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sql = "UPDATE task SET name = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, name);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
+    }
+
+    @Override
+    public void modifyTaskDescription(int id, String description) throws SQLException {
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sql = "UPDATE task SET description = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, description);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
+    }
+
+    @Override
+    public void modifyTask(int id, String name, String description) throws SQLException {
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sql = "UPDATE task SET name = ?, description = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, name);
+            statement.setString(2, description);
+            statement.setInt(3, id);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
+    }
 }

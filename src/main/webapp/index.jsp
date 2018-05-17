@@ -141,6 +141,11 @@
     <p>ID: <span id="task-id"></span></p>
     <p>Name: <span id="task-name"></span></p>
     <p>Description: <span id="task-description"></span></p>
+    <form id="modify-task-form" onsubmit="return false;">
+        <input type="text" name="name" placeholder="Task name">
+        <input type="text" name="description" placeholder="Task description">
+        <button onclick="onTaskModifyClicked();">Modify</button>
+    </form>
 </div>
 
 <div id="users-content" class="hidden content">

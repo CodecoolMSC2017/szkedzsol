@@ -42,6 +42,28 @@ public class TaskServlet extends AbstractServlet {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try (Connection connection = getConnection(req.getServletContext())) {
+            TaskDao taskDao = new DatabaseTaskDao(connection);
+            TaskService taskService = new SimpleTaskService(taskDao);
+
+            User user = (User) req.getSession().getAttribute("user");
+            int userId = user.getId();
+
+            int id = Integer.parseInt(req.getParameter("id"));
+            String name = req.getParameter("name");
+            String description = req.getParameter("description");
+            taskService.modifyTask(id,name, description);
+
+            Task task = taskService.getTaskById(id, userId);
+            sendMessage(resp,200, task);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ServiceException se) {
+            sendMessage(resp, HttpServletResponse.SC_UNAUTHORIZED, se.getMessage());
+        }
     }
 }

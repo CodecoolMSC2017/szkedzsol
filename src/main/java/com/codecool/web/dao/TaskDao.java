@@ -19,4 +19,10 @@ public interface TaskDao {
     Task findByUserAndTaskId(int taskId, int userId) throws SQLException;
 
     void deleteTask(int id) throws SQLException;
+
+    void modifyTaskName(int id, String name) throws SQLException;
+
+    void modifyTaskDescription(int id, String description) throws SQLException;
+
+    void modifyTask(int id, String name, String description) throws SQLException;
 }

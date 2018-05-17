@@ -60,4 +60,22 @@ public class SimpleTaskService implements TaskService {
             throw new ServiceException(ex.getMessage());
         }
     }
+
+    @Override
+    public void modifyTask(int id, String name, String description) throws SQLException, ServiceException {
+        try {
+            if (!name.equals("") && !description.equals("") && description != null && name != null) {
+                taskDao.modifyTask(id, name, description);
+            } else if (!name.equals("") && name != null && description.equals("") || description == null) {
+                taskDao.modifyTaskName(id, name);
+            } else if (!description.equals("") && description != null && name.equals("") || name == null) {
+                taskDao.modifyTaskDescription(id, description);
+            } else {
+                throw new ServiceException("Fill at least one box");
+            }
+
+        } catch (IllegalArgumentException ex) {
+            throw new ServiceException(ex.getMessage());
+        }
+    }
 }

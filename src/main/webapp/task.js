@@ -1,44 +1,7 @@
-let couponId;
-
-
-
 function createTask(task) {
     const liEl = document.createElement('li');
     liEl.textContent = `${task.id} - ${task.name} - ${task.description}`;
     return liEl;
-}
-
-function showTaskContent(tasks) {
-    const couponShopsSpanEl = document.getElementById('coupon-shops');
-
-    removeAllChildren(couponShopsSpanEl);
-
-    if (shops.length === 0) {
-        couponShopsSpanEl.textContent = 'No associated shops';
-    } else {
-        const ulEl = document.createElement('ul');
-        for (let i= 0; i < shops.length; i++) {
-            const shop = shops[i];
-            ulEl.appendChild(createTask(task));
-        }
-        couponShopsSpanEl.appendChild(ulEl);
-    }
-}
-
-function addAllShops(shops) {
-    const selectEl = document.querySelector('#coupon-shops-form > select');
-
-    removeAllChildren(selectEl);
-
-    for (let i= 0; i < shops.length; i++) {
-        const shop = shops[i];
-
-        const optionEl = document.createElement('option');
-        optionEl.value = shop.id;
-        optionEl.textContent = `${shop.id} - ${shop.name}`;
-
-        selectEl.appendChild(optionEl);
-    }
 }
 
 function onTaskLoad(task) {
@@ -57,6 +20,35 @@ function onTaskResponse() {
         showContents(['task-content', 'back-to-profile-content', 'logout-content']);
         onTaskLoad(JSON.parse(this.responseText));
     } else {
-        onOtherResponse(couponsContentDivEl, this);
+        onOtherResponse(taskContentDivEl, this);
     }
+}
+
+function onTaskModifyClicked() {
+    const taskFormEl = document.forms['modify-task-form'];
+
+    const nameInputEl = taskFormEl.querySelector('input[name="name"]');
+    const descriptionInputEl = taskFormEl.querySelector('input[name="description"]');
+
+    const name = nameInputEl.value;
+    const description = descriptionInputEl.value;
+
+    const divEl = document.getElementById('task-content');
+    const pEls = divEl.getElementsByTagName('p');
+
+    const id = pEls[0].children[0].innerHTML;
+
+    const params2 = new URLSearchParams();
+    params2.append('id', id);
+
+    const params1 = new URLSearchParams();
+    params1.append('id', id);
+    params1.append('name', name);
+    params1.append('description', description);
+
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', onTaskResponse);
+        xhr.addEventListener('error', onNetworkError);
+        xhr.open('POST', 'protected/task', false);
+        xhr.send(params1);
 }
