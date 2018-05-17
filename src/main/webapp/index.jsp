@@ -10,6 +10,7 @@
         <c:url value="/index.js" var="indexScriptUrl"/>
         <c:url value="/register.js" var="registerScriptUrl"/>
         <c:url value="/login.js" var="loginScriptUrl"/>
+        <c:url value="/menupoints.js" var="menuScriptUrl"/>
         <c:url value="/profile.js" var="profileScriptUrl"/>
         <c:url value="/schedule.js" var="scheduleScriptUrl"/>
         <c:url value="/schedules.js" var="schedulesScriptUrl"/>
@@ -25,6 +26,7 @@
         <script src="${indexScriptUrl}"></script>
         <script src="${registerScriptUrl}"></script>
         <script src="${loginScriptUrl}"></script>
+        <script src="${menuScriptUrl}"></script>
         <script src="${profileScriptUrl}"></script>
         <script src="${scheduleScriptUrl}"></script>
         <script src="${schedulesScriptUrl}"></script>
@@ -66,12 +68,10 @@
     <h1>Profile</h1>
     <p>Email: <span id="user-email"></span></p>
     <p>Name: <span id="user-name"></span></p>
-    <h2>Links</h2>
-    <ul>
-        <li><a href="javascript:void(0);" onclick="onSchedulesClicked();">Schedules</a></li>
-        <li><a href="javascript:void(0);" onclick="onTasksClicked();">Tasks</a></li>
-    </ul>
 </div>
+<div id="menu">
+</div>
+
 <div id="schedules-content" class="hidden content">
     <h1>Schedules</h1>
     <table id="schedules">
