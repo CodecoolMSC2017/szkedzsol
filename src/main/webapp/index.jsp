@@ -71,12 +71,12 @@
 
     <br><br><br>
 
-    <div id="profile-content" class="hidden content">
+    <div id="profile-content" class="hidden content center-box">
         <h1>Profile</h1>
-        <p>Email:
+        <p><strong>Email:</strong>
             <span id="user-email"></span>
         </p>
-        <p>Name:
+        <p><strong>Name:</strong>
             <span id="user-name"></span>
         </p>
 
@@ -84,7 +84,7 @@
     <div id="menu-content">
     </div>
 
-    <div id="schedules-content" class="hidden content">
+    <div id="schedules-content" class="hidden content center-box">
         <h1>Schedules</h1>
         <table id="schedules">
             <thead>
@@ -107,7 +107,7 @@
         </form>
     </div>
 
-    <div id="schedule-content" class="hidden content">
+    <div id="schedule-content" class="hidden content center-box">
         <h1>Schedule</h1>
         <p>ID:
             <span id="schedule-id"></span>
@@ -123,13 +123,13 @@
         </form>
     </div>
 
-    <div id="schedule-tasks-content" class="hidden content">
+    <div id="schedule-tasks-content" class="hidden content center-box">
         <button id="load-tasks">Load</button>
         <div id="task-list-drop"></div>
         <br><br><br>
     </div>
 
-    <div id="tasks-content" class="hidden content">
+    <div id="tasks-content" class="hidden content center-box">
         <h1>Tasks</h1>
         <table id="tasks">
             <thead>
@@ -143,21 +143,19 @@
             <tbody>
             </tbody>
         </table>
-
-        <br><br><br><br><br><br><br><br>
-
         <form id="task-form" onsubmit="return false;">
             <h2>Add new Task</h2>
             <p>Task Name</p>
             <input type="text" name="name" required>
             <p>Task Description</p>
             <input type="text" name="description" required>
+            <br><br>
             <button onclick="onTaskAddClicked();onTasksClicked();">Add</button>
         </form>
         <br>
     </div>
 
-    <div id="task-content" class="hidden content">
+    <div id="task-content" class="hidden content center-box">
         <h1>Task</h1>
         <p>ID:
             <span id="task-id"></span>
@@ -175,7 +173,7 @@
         </form>
     </div>
 
-    <div id="users-content" class="hidden content">
+    <div id="users-content" class="hidden content center-box">
         <h1>Registered users</h1>
         <table id="users">
             <thead>
@@ -191,12 +189,12 @@
         </table>
     </div>
 
-    <div id="back-to-profile-content" class="hidden content">
+    <div id="back-to-profile-content" class="hidden content center-box">
         <br>
         <button onclick="onBackToProfileClicked();">Back to profile</button>
     </div>
 
-    <div id="logout-content" class="hidden content">
+    <div id="logout-content" class="hidden content center-box">
         <button id="logout-button">Logout</button>
     </div>
 
