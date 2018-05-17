@@ -17,7 +17,7 @@ function onTaskLoad(task) {
 function onTaskResponse() {
     if (this.status === OK) {
         clearMessages();
-        showContents(['task-content', 'logout-content']);
+        showContents(['task-content']);
         onTaskLoad(JSON.parse(this.responseText));
     } else {
         onOtherResponse(taskContentDivEl, this);

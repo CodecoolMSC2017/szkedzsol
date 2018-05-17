@@ -95,7 +95,7 @@ function onTasksLoad(tasks) {
 
 function onTasksResponse() {
     if (this.status === OK) {
-        showContents(['tasks-content', 'logout-content']);
+        showContents(['tasks-content']);
         onTasksLoad(JSON.parse(this.responseText));
     } else {
         onOtherResponse(tasksContentDivEl, this);

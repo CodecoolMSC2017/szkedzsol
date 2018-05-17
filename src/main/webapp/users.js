@@ -26,7 +26,7 @@ function appendUser(user) {
         nameTdEl.textContent = user.name;
 
         const emailTdEl = document.createElement('td');
-        emailTdEl.setAttribute('class','zoom');        
+        emailTdEl.setAttribute('class','zoom');
         emailTdEl.textContent = user.email;
 
         const roleTdEl = document.createElement('td');
@@ -59,7 +59,7 @@ function onUsersLoad(users) {
 
 function onUsersResponse() {
     if (this.status === OK) {
-        showContents(['users-content', 'logout-content']);
+        showContents(['users-content']);
         onUsersLoad(JSON.parse(this.responseText));
     } else {
         onOtherResponse(tasksContentDivEl, this);
