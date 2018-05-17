@@ -2,6 +2,7 @@ function onLogoutResponse() {
     if (this.status === OK) {
         setUnauthorized();
         clearMessages();
+        hideMenuContent();
         showContents(['login-content'])
     } else {
         onOtherResponse(logoutContentDivEl, this);

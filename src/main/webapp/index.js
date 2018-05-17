@@ -100,6 +100,11 @@ function setUnauthorized() {
     return localStorage.removeItem('user');
 }
 
+function hideMenuContent() {
+    const menu = document.getElementById('menu');
+    removeAllChildren(menu);
+}
+
 function onLoad() {
     registerContentDivEl = document.getElementById('register-content');
     loginContentDivEl = document.getElementById('login-content');
