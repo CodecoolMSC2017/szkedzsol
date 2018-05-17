@@ -14,13 +14,13 @@ function onTasksClicked() {
     xhr.send();
 }
 
-function onProfileLoad(user) {
+function onProfileLoad() {
     clearMessages();
     showContents(['profile-content', 'logout-content']);
 
     const userEmailSpandEl = document.getElementById('user-email');
     const userNameSpanEl = document.getElementById('user-name');
 
-    userEmailSpandEl.textContent = user.email;
-    userNameSpanEl.textContent = user.name;
+    userEmailSpandEl.textContent = getAuthorization().email;
+    userNameSpanEl.textContent = getAuthorization().name;
 }

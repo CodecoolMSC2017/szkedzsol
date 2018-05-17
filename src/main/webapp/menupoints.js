@@ -19,8 +19,8 @@ cEl.textContent = 'Tasks';
 cEl.href = 'javascript:void(0)';
 cEl.addEventListener('click', onTasksClicked);
 if(role=='ADMIN'){
-    const liEl4 = document.createElement('li');    
-    const dEl = document.createElement('a');    
+    const liEl4 = document.createElement('li');
+    const dEl = document.createElement('a');
     dEl.textContent = 'Registered Users';
     dEl.href = 'javascript:void(0)';
     dEl.addEventListener('click', onUsersClicked);

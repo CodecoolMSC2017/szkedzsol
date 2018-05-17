@@ -58,7 +58,7 @@ function onUsersLoad(users) {
 
 function onUsersResponse() {
     if (this.status === OK) {
-        showContents(['users-content', 'back-to-profile-content', 'logout-content']);
+        showContents(['users-content', 'logout-content']);
         onUsersLoad(JSON.parse(this.responseText));
     } else {
         onOtherResponse(tasksContentDivEl, this);

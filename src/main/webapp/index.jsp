@@ -64,6 +64,7 @@
     <br>
     <button id="toregister-button" class="mainButton">Sign up</button>
 </div>
+<br><br><br>
 <div id="profile-content" class="hidden content">
     <h1>Profile</h1>
     <p>Email: <span id="user-email"></span></p>

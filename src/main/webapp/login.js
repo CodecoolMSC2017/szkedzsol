@@ -2,8 +2,9 @@ function onLoginResponse() {
     if (this.status === OK) {
         const user = JSON.parse(this.responseText);
         setAuthorization(user);
-        createMenu();        
-        onProfileLoad(user);
+        createMenu();
+        showContents(['']);
+
     } else {
         onOtherResponse(loginContentDivEl, this);
     }
