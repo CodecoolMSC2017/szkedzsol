@@ -26,6 +26,7 @@ function appendUser(user) {
         nameTdEl.textContent = user.name;
 
         const emailTdEl = document.createElement('td');
+        emailTdEl.setAttribute('class','zoom');        
         emailTdEl.textContent = user.email;
 
         const roleTdEl = document.createElement('td');
