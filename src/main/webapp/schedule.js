@@ -115,27 +115,29 @@ function createTasksTable(tasks) {
     return tableEl;
 }
 
-function createDropTableBody(){
-    const scheduleFormEl = document.forms['how-many'];
-    const nameInputEl = scheduleFormEl.querySelector('input[name="howMany"]');
-    const number = nameInputEl.value;
+function createDropTableBody(dropTableElId){
     const tbodyEl = document.createElement('tbody');
     const dropTableEl = document.getElementById('colTable');
     let counter = 0;
-    while(counter < 12){
+    while(counter < 24){
         const dropTableEl = document.getElementById('colTable');
         const dropTrEl = document.createElement('tr');
         const dropTdEl = document.createElement('td');
 
+        // CREATE DROPZONE (SLOT) WITH IT'S ATTRIBUTES
         const dropDivEl = document.createElement('div');
-        dropDivEl.id = "drop_zone";
+        dropDivEl.id = dropTableElId+counter;
+        dropDivEl.className = 'drop_zone';
+        const dropDivElId = dropDivEl.id;
         dropDivEl.setAttribute('ondrop', 'drag_drop(event)');
         dropDivEl.setAttribute('ondragover', 'return false');
 
 
         //CREATE GET DATA AND CLEAR BUTTON
         const getDataButtonEl = document.createElement('button');
+        getDataButtonEl.setAttribute('drop_zone', dropTableElId+counter);
         const clearButtonEl = document.createElement('button');
+        clearButtonEl.setAttribute('drop_zone', dropTableElId+counter);
 
         getDataButtonEl.addEventListener('click', readDropZone);
         getDataButtonEl.textContent = 'Get Data';
@@ -148,19 +150,26 @@ function createDropTableBody(){
         dropTrEl.appendChild(dropTdEl);
         tbodyEl.appendChild(dropTrEl);
         counter++;
-    }
+        }
     return tbodyEl;
 }
 
 function createDropZone(){
-    const dropTableEl = document.createElement('table');
-    dropTableEl.setAttribute("id", "colTable");
-    dropTableEl.style.cssFloat = 'right';
+    const scheduleFormEl = document.forms['how-many'];
+    const nameInputEl = scheduleFormEl.querySelector('input[name="howMany"]');
+    const number = nameInputEl.value;
+    let dayCounter = 0;
 
     const divEl = document.getElementById('task-list-drop');
-    const dropTableBodyEl = createDropTableBody();
+    for(let i = 0; i < number; i++){
+    const dropTableEl = document.createElement('table');
+    dropTableEl.setAttribute("id", "colTable"+i);
+    dropTableEl.style.cssFloat = 'right';
+    const dropTableElId = dropTableEl.id;
+    const dropTableBodyEl = createDropTableBody(dropTableElId);
     dropTableEl.appendChild(dropTableBodyEl);
     divEl.appendChild(dropTableEl);
+    }
 
     return dropTableEl;
 }
@@ -191,15 +200,15 @@ function drag_end(event) {
 	droppedIn = false;
 }
 function readDropZone(){
-    let parent = _('drop_zone');
+    let parent = _(this.getAttribute('drop_zone'));
     for(var i=0; i < parent.children.length; i++){
-        alert(_("drop_zone").children[i].textContent+" is in the drop zone");
+        alert(parent.children[i].textContent+" is in the drop zone");
     }
 }
 function clearDropZone(){
-    let parent = _('drop_zone');
+    let parent = _(this.getAttribute('drop_zone'));
 	for(var i=0; i < parent.children.length; i++){
-		let delObj =  _("drop_zone").children[0];
+		let delObj = parent.children[0];
 		if(parent.firstChild){
 			delObj.parentNode.removeChild(delObj);
 		}

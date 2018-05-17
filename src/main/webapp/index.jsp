@@ -107,8 +107,7 @@
     <button id="load-tasks">Load</button>
     <div id="task-list-drop"></div><br><br>
     <br>
-    <button float:right onclick="readDropZone()">Get Object Data</button>
-    <button float:right onclick="clearDropZone()">Clear</button>
+    
 </div>
 
 <div id="tasks-content" class="hidden content">
