@@ -102,7 +102,7 @@ function onSchedulesLoad(schedules) {
 
 function onSchedulesResponse() {
     if (this.status === OK) {
-        showContents(['schedules-content', 'logout-content']);
+        showContents(['schedules-content']);
         onSchedulesLoad(JSON.parse(this.responseText));
     } else {
         onOtherResponse(schedulesContentDivEl, this);
