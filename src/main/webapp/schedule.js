@@ -139,14 +139,11 @@ function createDropTableBody(dropTableElId){
 
         //CREATE GET DATA AND CLEAR BUTTON
         //const getDataButtonEl = document.createElement('button');
-        getDataButtonEl.setAttribute('drop_zone', dropTableElId+counter);
+        getDataButtonEl.setAttribute('drop_zone', dropTableElId+(counter+1));
         //const clearButtonEl = document.createElement('button');
-        clearButtonEl.setAttribute('drop_zone', dropTableElId+counter);
+        clearButtonEl.setAttribute('drop_zone', dropTableElId+(counter+2));
 
-        getDataButtonEl.addEventListener('click', readDropZone);
-        getDataButtonEl.textContent = 'Get Data';
-        clearButtonEl.addEventListener('click', clearDropZone);
-        clearButtonEl.textContent = 'Clear';
+
 
         dropTdEl.appendChild(dropDivEl);
 
@@ -154,6 +151,12 @@ function createDropTableBody(dropTableElId){
         tbodyEl.appendChild(dropTrEl);
         counter++;
         }
+
+        getDataButtonEl.addEventListener('click', readDropZone(dropTableElId));
+        getDataButtonEl.textContent = 'Get Data';
+        clearButtonEl.addEventListener('click', clearDropZone(dropTableElId));
+        clearButtonEl.textContent = 'Clear';
+
         tbodyEl.appendChild(getDataButtonEl);
         tbodyEl.appendChild(clearButtonEl);
 
@@ -223,13 +226,39 @@ function drag_drop(event) {
 function drag_end(event) {
 	droppedIn = false;
 }
-function readDropZone(){
-    let bigParent = document.querySelectorAll('[id^=colTable0]');
-    console.log(bigParent);
-    let parent = _(this.getAttribute('drop_zone'));
-    for(var k=0; k < parent.children.length; k++){
-        console.log(parent.children[k]);
+function readDropZone(dropTableElId){
+    let queryForAll;
+    let queryForDropZone;
+    switch(dropTableElId){
+    case 'colTable0' :
+        queryForAll = '[id^=colTable0]';
+        break;
+    case 'colTable1' :
+        queryForAll = '[id^=colTable1]';
+        break;
+    case 'colTable2' :
+        queryForAll = '[id^=colTable2]';
+        break;
+    case 'colTable3' :
+        queryForAll = '[id^=colTable3]';
+        break;
+    case 'colTable4' :
+        queryForAll = '[id^=colTable4]';
+        break;
+    case 'colTable5' :
+        queryForAll = '[id^=colTable5]';
+        break;
+    case 'colTable6' :
+        queryForAll = '[id^=colTable6]';
+        break;
     }
+console.log(queryForAll);
+    let bigParent = document.querySelectorAll(queryForAll);
+    console.log(bigParent);
+    //let parent = _(this.getAttribute('drop_zone'));
+    /*for(var k=0; k < parent.children.length; k++){
+        console.log(parent.children[k]);
+    }*/
     for(var j=0; j < bigParent.length; j++){
         for(var i=0; i < bigParent[j].children.length; i++){
             alert(bigParent[j].children[i].textContent+" is in the drop zone");
@@ -238,7 +267,7 @@ function readDropZone(){
 }
 function clearDropZone(){
     let bigParent = document.querySelectorAll('[id^=colTable0]');
-    let parent = _(this.getAttribute('drop_zone'));
+    //let parent = _(this.getAttribute('drop_zone'));
     for(var j=0; j < bigParent.length; j++){
         for(var i=0; i < bigParent[j].children.length; i++){
 	//for(var i=0; i < parent.children.length; i++){

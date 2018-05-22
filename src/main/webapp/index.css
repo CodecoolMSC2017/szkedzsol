@@ -134,7 +134,7 @@ li a:hover:not(.active) {
     border-radius: 8px;
     padding:20px;
     margin: 50px;
-    float:left;
+    float:right;
 }
 
 /* users list position */
