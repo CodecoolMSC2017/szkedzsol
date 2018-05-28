@@ -25,6 +25,8 @@ function onTaskResponse() {
 }
 
 function onTaskModifyClicked() {
+    const err = document.getElementById('task-modify-error-message');
+
     const taskFormEl = document.forms['modify-task-form'];
 
     const nameInputEl = taskFormEl.querySelector('input[name="name"]');
@@ -42,6 +44,7 @@ function onTaskModifyClicked() {
     const data = JSON.stringify({"taskId" : id, "taskName" : name, "taskDescription" : description});
 
     if(name && description !== null) {
+        err.textContent = '';
         const xhr = new XMLHttpRequest();
         xhr.addEventListener('load', onTaskResponse);
         xhr.addEventListener('error', onNetworkError);
@@ -49,7 +52,7 @@ function onTaskModifyClicked() {
         xhr.setRequestHeader("Content-type","application/json");
         xhr.send(data);
     } else {
-        alert("Fill at least one box");
+        err.textContent = 'Fill at least one box';
     }
     
 }

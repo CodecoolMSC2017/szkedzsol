@@ -171,6 +171,7 @@
             <input type="text" name="description" placeholder="Task description">
             <button onclick="onTaskModifyClicked();">Modify</button>
         </form>
+        <p id="task-modify-error-message"></p>
     </div>
 
     <div id="users-content" class="hidden content center-box">

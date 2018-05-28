@@ -142,3 +142,7 @@ li a:hover:not(.active) {
     margin: 0 auto;
     text-align: center;
 }
+
+#task-modify-error-message {
+    color:red;
+}
