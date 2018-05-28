@@ -175,6 +175,7 @@ function createDropTableHead(dropTableElId) {
 
     const tnameEl = document.createElement('input');
     tnameEl.id = dropTableElId+'nameIn';
+    tnameEl.className = "schedule-name-input";
 
     dropTdEl.appendChild(tnameEl);
     dropTrEl.appendChild(dropTdEl);
