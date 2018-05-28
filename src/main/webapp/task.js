@@ -41,10 +41,15 @@ function onTaskModifyClicked() {
 
     const data = JSON.stringify({"taskId" : id, "taskName" : name, "taskDescription" : description});
 
-    const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onTaskResponse);
-    xhr.addEventListener('error', onNetworkError);
-    xhr.open('PUT', 'protected/task');
-    xhr.setRequestHeader("Content-type","application/json");
-    xhr.send(data);
+    if(name && description !== null) {
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', onTaskResponse);
+        xhr.addEventListener('error', onNetworkError);
+        xhr.open('PUT', 'protected/task');
+        xhr.setRequestHeader("Content-type","application/json");
+        xhr.send(data);
+    } else {
+        alert("Fill at least one box");
+    }
+    
 }
