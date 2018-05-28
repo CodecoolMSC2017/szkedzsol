@@ -1,0 +1,4 @@
+2018-05-28 13:11:48 ERROR SimpleLoginService:34 - Error while login inEmail cannot be null or empty
+2018-05-28 13:11:48 WARN  LoginServlet:38 - Login failed becasue of SERVICE EXCEPTION
+2018-05-28 13:12:45 INFO  SimpleLoginService:31 - user1Logged in
+2018-05-28 13:12:45 INFO  LoginServlet:34 - Current user logged in succesfully

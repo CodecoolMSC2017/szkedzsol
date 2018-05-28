@@ -4,11 +4,15 @@ import com.codecool.web.dao.TaskDao;
 import com.codecool.web.model.Task;
 import com.codecool.web.service.TaskService;
 import com.codecool.web.service.exception.ServiceException;
+import com.codecool.web.service.exception.TaskException;
+import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class SimpleTaskService implements TaskService {
+
+    final static Logger logger = Logger.getLogger(SimpleTaskService.class);
 
     private final TaskDao taskDao;
 
@@ -18,64 +22,70 @@ public class SimpleTaskService implements TaskService {
 
 
     @Override
-    public List<Task> findByUserId(int userId) throws SQLException, ServiceException {
+    public List<Task> findByUserId(int userId) throws SQLException, TaskException {
         try {
             return taskDao.findByUserId(userId);
         } catch (IllegalArgumentException ex) {
-            throw new ServiceException(ex.getMessage());
+            throw new TaskException(ex.getMessage());
         }
     }
 
     @Override
-    public void addTask(String name, String description, int userId) throws SQLException, ServiceException {
+    public void addTask(String name, String description, int userId) throws SQLException, TaskException {
         try {
             if(name == null || name.equals("") || description == null || description.equals("")) {
-                throw new ServiceException("Incorrect name or descreption");
+                throw new TaskException("Incorrect name or descreption");
             } else {
                 taskDao.insertTask(name, description, userId);
+                logger.info("TASK ADDED TO DATABASE");
+
             }
-        } catch (IllegalArgumentException ex) {
-            throw new ServiceException(ex.getMessage());
+        } catch (TaskException ex) {
+            logger.error(ex.getMessage());
         }
     }
 
     @Override
-    public Task getTaskById(int taskId, int userId) throws SQLException, ServiceException {
+    public Task getTaskById(int taskId, int userId) throws SQLException, TaskException {
         try{
             return taskDao.findByUserAndTaskId(taskId, userId);
         } catch (IllegalArgumentException ex) {
-            throw new ServiceException(ex.getMessage());
+            throw new TaskException(ex.getMessage());
         }
     }
 
     @Override
-    public void deleteTask(int id) throws SQLException, ServiceException {
+    public void deleteTask(int id) throws SQLException, TaskException {
         try {
             if (id == 0) {
-                throw new ServiceException("Incorrect id");
+                throw new TaskException("Incorrect id");
             } else {
                 taskDao.deleteTask(id);
+                logger.info("TASK DELETED SUCCESFULLY");
             }
-        } catch (IllegalArgumentException ex) {
-            throw new ServiceException(ex.getMessage());
+        } catch (TaskException ex) {
+            logger.error(ex.getMessage());
         }
     }
 
     @Override
-    public void modifyTask(int id, String name, String description) throws SQLException, ServiceException {
+    public void modifyTask(int id, String name, String description) throws SQLException, TaskException {
         try {
             if (!name.equals("") && !description.equals("") && description != null && name != null) {
                 taskDao.modifyTask(id, name, description);
+                logger.info("TASK MODIFIED SUCCESSFULLY");
             } else if (!name.equals("") && name != null && description.equals("") || description == null) {
                 taskDao.modifyTaskName(id, name);
+                logger.info("TASK MODIFIED SUCCESSFULLY");
             } else if (!description.equals("") && description != null && name.equals("") || name == null) {
                 taskDao.modifyTaskDescription(id, description);
+                logger.info("TASK MODIFIED SUCCESSFULLY");
             } else {
-                throw new ServiceException("Fill at least one box");
+                throw new TaskException("Fill at least one box");
             }
 
-        } catch (IllegalArgumentException ex) {
-            throw new ServiceException(ex.getMessage());
+        } catch (TaskException ex) {
+            logger.error(ex.getMessage());
         }
     }
 }

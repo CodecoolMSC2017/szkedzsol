@@ -3,12 +3,14 @@ package com.codecool.web.dao.database;
 import com.codecool.web.dao.UserDao;
 import com.codecool.web.model.Role;
 import com.codecool.web.model.User;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class DatabaseUserDao extends AbstractDao implements UserDao {
+
 
     public DatabaseUserDao(Connection connection) {
         super(connection);
@@ -28,6 +30,7 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
 
     @Override
     public User findByEmail(String email) throws SQLException {
+
         if (email == null || "".equals(email)) {
             throw new IllegalArgumentException("Email cannot be null or empty");
         }
@@ -52,6 +55,7 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
     }
 
     public void addUser(String email, String name) throws SQLException {
+
         if (email == null || "".equals(email) || name == null || "".equals(name)) {
             throw new IllegalArgumentException("Email/name cannot be null or empty");
         }

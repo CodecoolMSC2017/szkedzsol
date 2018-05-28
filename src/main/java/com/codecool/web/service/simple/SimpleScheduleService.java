@@ -3,12 +3,17 @@ package com.codecool.web.service.simple;
 import com.codecool.web.dao.ScheduleDao;
 import com.codecool.web.model.Schedule;
 import com.codecool.web.service.ScheduleService;
+import com.codecool.web.service.exception.ScheduleException;
 import com.codecool.web.service.exception.ServiceException;
+import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class SimpleScheduleService implements ScheduleService {
+
+    final static Logger logger = Logger.getLogger(SimpleScheduleService.class);
+
 
     private final ScheduleDao scheduleDao;
 
@@ -17,24 +22,25 @@ public class SimpleScheduleService implements ScheduleService {
     }
 
     @Override
-    public List<Schedule> getSchedules(int userId) throws SQLException, ServiceException {
+    public List<Schedule> getSchedules(int userId) throws SQLException, ScheduleException {
         try {
             return scheduleDao.findByUserId(userId);
         } catch (IllegalArgumentException ex) {
-            throw new ServiceException(ex.getMessage());
+            throw new ScheduleException("Couldnt find user");
         }
     }
 
     @Override
-    public void addSchedule(int userId, String scheduleTitle) throws SQLException, ServiceException {
+    public void addSchedule(int userId, String scheduleTitle) throws SQLException {
         try {
             if (scheduleTitle == null || scheduleTitle.equals("")) {
-                throw new ServiceException("Incorrect name");
+                throw new ScheduleException("Incorrect name");
             } else {
                 scheduleDao.insertSchedule(userId, scheduleTitle);
+                logger.info("SCHEDULE inserted into database");
             }
-        } catch (IllegalArgumentException ex) {
-            throw new ServiceException(ex.getMessage());
+        } catch (ScheduleException ex) {
+            logger.error("SCHEDULE EXCEPTION "+ex.getMessage());
         }
     }
 
@@ -43,7 +49,7 @@ public class SimpleScheduleService implements ScheduleService {
         try {
             return scheduleDao.findByScheduleId(scheduleId);
         } catch (IllegalArgumentException ex) {
-            throw new ServiceException(ex.getMessage());
+            throw new ScheduleException(ex.getMessage());
         }
     }
 
@@ -51,12 +57,13 @@ public class SimpleScheduleService implements ScheduleService {
     public void deleteSchedule(int id) throws SQLException, ServiceException {
         try {
             if (id == 0) {
-                throw new ServiceException("Incorrect id");
+                throw new ScheduleException("Incorrect id");
             } else {
                 scheduleDao.deleteSchedule(id);
+                logger.info("SCHEDULE Deleted succesfully");
             }
-        } catch (IllegalArgumentException ex) {
-            throw new ServiceException(ex.getMessage());
+        } catch (ScheduleException ex) {
+            logger.error(ex.getMessage());
         }
     }
 }

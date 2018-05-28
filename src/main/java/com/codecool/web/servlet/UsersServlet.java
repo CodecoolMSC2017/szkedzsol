@@ -37,7 +37,7 @@ public class UsersServlet extends AbstractServlet {
                     req.setAttribute("users", users);
                     sendMessage(resp, 200, users);
 
-                } catch (ServiceException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
