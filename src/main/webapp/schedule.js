@@ -136,7 +136,6 @@ function createDropTableBody(dropTableElId) {
         dropDivEl.id = dropTableElId + counter;
         dropDivEl.className = 'drop_zone';
         dropDivEl.value = counter + 1;                          //this is muy importante
-        dropDivEl.textContent = dropDivEl.value;                 //you can leave this line after the css version is implemented
         const dropDivElId = dropDivEl.id;
         dropDivEl.setAttribute('ondrop', 'drag_drop(event)');
         dropDivEl.setAttribute('ondragover', 'return false');
@@ -148,6 +147,8 @@ function createDropTableBody(dropTableElId) {
         //const clearButtonEl = document.createElement('button');
         //clearButtonEl.setAttribute('drop_zone', dropTableElId+(counter+2));
 
+        dropDivEl.setAttribute('contentEditable', false);
+        dropDivEl.setAttribute('data-text',(counter + "-" + (counter+1)));
 
         dropTdEl.appendChild(dropDivEl);
 
@@ -162,7 +163,7 @@ function createDropTableBody(dropTableElId) {
     });
     getDataButtonEl.textContent = 'Save';
     clearButtonEl.addEventListener('click', function () {
-        clearDropZone();
+        clearDropZone(tbodyEl);
     });
     clearButtonEl.textContent = 'Clear';
 
@@ -227,14 +228,11 @@ function drag_start(event) {
 }
 
 function drag_drop(event) {
-    event.target.textContent = null;                                //remove this after the css implementaion
     event.preventDefault();
     event.target.appendChild(currDiv);
     //currDiv.removeAttribute("draggable");
     currDiv.style.cursor = "default";
     droppedIn = true;
-
-    checkDropBoxes();                                               //remove this after the css implementaion
 }
 
 function drag_end(event) {
@@ -245,38 +243,27 @@ function readDropZone(tbodyEl, dropTableElId) {
     let tasks = new Map();
     for (var j = 0; j < tbodyEl.children.length - 2; j++) {
         let taskObj = tbodyEl.children[j].children["0"].children["0"].children["0"];
-        let taskStart = tbodyEl.children[j].children["0"].children["0"].value;
+        let taskTime = tbodyEl.children[j].children["0"].children["0"].value;
         if (tbodyEl.contains(taskObj)) {
-            tasks.set(taskObj.id, taskStart);
+            tasks.set(taskObj.id, taskTime);
         }
     }
-    const data = JSON.stringify({ "dropTableElId": dropTableElId, "dayName": dayName, "tasks": tasks });
+    console.log(tasks);
+    /*const data = JSON.stringify({ "dropTableElId": dropTableElId, "dayName": dayName, "tasks": tasks });
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onTaskReloadResponse);
     xhr.addEventListener('error', onNetworkError);
     xhr.open('PUT', 'protected/schedule');
     xhr.setRequestHeader("Content-type", "application/json");
-    xhr.send(data);
+    xhr.send(data);*/
 }
-function clearDropZone() {
+function clearDropZone(tbodyEl) {
     const columntables = document.getElementsByClassName('columntable');
-    for (let j = 0; j < columntables.length; j++) {
-        for (let i = 0; i < columntables[j].children.length; i++) {
-            let delObj = columntables[j].children[i].children["0"].children["0"].children["0"];
-            if (delObj !== null) {
+    for (let j = 0; j < tbodyEl.children.length -2; j++) {
+        for (let i = 0; i < tbodyEl.children[j].children.length; i++) {
+            let delObj = tbodyEl.children[j].children[i].children["0"].children["0"];
+            if (delObj != null) {
                 delObj.remove();
-                checkDropBoxes();
-            }
-        }
-    }
-}
-
-function checkDropBoxes() {
-    const columntables = document.getElementsByClassName('columntable');
-    for (let j = 0; j < columntables.length; j++) {
-        for (let i = 0; i < columntables[j].children.length; i++) {
-            if (columntables[j].children[i].children["0"].children["0"].textContent === "") {
-                columntables[j].children[i].children["0"].children["0"].textContent = columntables[j].children[i].children["0"].children["0"].value;
             }
         }
     }

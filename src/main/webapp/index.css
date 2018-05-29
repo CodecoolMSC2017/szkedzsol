@@ -89,6 +89,42 @@ li a:hover:not(.active) {
     cursor: move;
 }
 
+[contentEditable = false]:empty:not(:focus):before{
+    content: attr(data-text);
+}
+
+table {
+    width: 70px;
+}
+
+.button {
+    float: right;
+    height:20px;
+    width: 80px;
+}
+
+#time {
+    padding: 0px;
+    margin: 0px;
+    width:30px;
+    float: right;
+}
+
+.nameInEl {
+    width: 40px;
+    float: center;
+}
+
+.schedule-name-input {
+    float: center;
+}
+
+#tableRow {
+    padding 0px;
+    margin: 0px;
+    width: 140px;
+}
+
 .schedule-name-input{
     width: 130px;
 }
