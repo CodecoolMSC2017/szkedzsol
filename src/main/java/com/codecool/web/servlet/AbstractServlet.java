@@ -3,6 +3,7 @@ package com.codecool.web.servlet;
 import com.codecool.web.dto.MessageDto;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;

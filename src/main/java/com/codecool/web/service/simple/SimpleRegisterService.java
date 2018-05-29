@@ -25,9 +25,9 @@ public class SimpleRegisterService implements RegisterService {
             }
 
             userDao.addUser(email, name);
-            logger.info(name+"d user has been added to the database");
+            logger.info(name+"'d user has been added to the database");
         } catch (RegisterException ex) {
-            logger.error("REGISTER ERROR "+ex.getMessage());
+            logger.warn("REGISTER ERROR "+ex.getMessage());
         }
     }
 }

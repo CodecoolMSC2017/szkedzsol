@@ -18,11 +18,11 @@ import java.sql.SQLException;
 
 @WebServlet("/login")
 public final class LoginServlet extends AbstractServlet {
+    final Logger logger = Logger.getLogger(LoginServlet.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        final Logger logger = Logger.getLogger(LoginServlet.class);
-
+        logger.info("LOGIN SERVLET DO POST CALLED");
         try (Connection connection = getConnection(req.getServletContext())) {
             UserDao userDao = new DatabaseUserDao(connection);
             LoginService loginService = new SimpleLoginService(userDao);
@@ -32,17 +32,15 @@ public final class LoginServlet extends AbstractServlet {
             User user = loginService.loginUser(email, name);
             req.getSession().setAttribute("user", user);
 
-            logger.info("Current user logged in succesfully");
+            logger.info("Current user logged in succesfully " + user.getName());
 
             sendMessage(resp, HttpServletResponse.SC_OK, user);
         } catch (LogingException ex) {
             logger.warn("Login failed becasue of SERVICE EXCEPTION");
             sendMessage(resp, HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
         } catch (SQLException ex) {
-            logger.warn("Login failed because of sql EXCEPTION");
+            logger.error("Login failed because of sql EXCEPTION");
             handleSqlError(resp, ex);
-        } catch (ServiceException e) {
-            e.printStackTrace();
         }
     }
 }

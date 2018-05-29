@@ -2,6 +2,7 @@ package com.codecool.web.dao.database;
 
 import com.codecool.web.dao.TaskDao;
 import com.codecool.web.model.Task;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +15,9 @@ public class DatabaseTaskDao extends AbstractDao implements TaskDao {
     public DatabaseTaskDao(Connection connection) {
         super(connection);
     }
+
+    final Logger logger = Logger.getLogger(DatabaseTaskDao.class);
+
 
     @Override
     public List<Task> findTasksByScheduleId(int id) throws SQLException {
@@ -87,8 +91,8 @@ public class DatabaseTaskDao extends AbstractDao implements TaskDao {
             statement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
+            logger.error("SQL EXCEPTION "+e.getMessage());
             connection.rollback();
-            throw e;
         } finally {
             connection.setAutoCommit(autoCommit);
         }
@@ -105,8 +109,8 @@ public class DatabaseTaskDao extends AbstractDao implements TaskDao {
             statement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
+            logger.error("SQL EXCEPTION "+e.getMessage());
             connection.rollback();
-            throw e;
         } finally {
             connection.setAutoCommit(autoCommit);
         }
@@ -123,8 +127,8 @@ public class DatabaseTaskDao extends AbstractDao implements TaskDao {
             statement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
+            logger.error("SQL EXCEPTION "+e.getMessage());
             connection.rollback();
-            throw e;
         } finally {
             connection.setAutoCommit(autoCommit);
         }
@@ -142,8 +146,8 @@ public class DatabaseTaskDao extends AbstractDao implements TaskDao {
             statement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
+            logger.error("SQL EXCEPTION "+e.getMessage());
             connection.rollback();
-            throw e;
         } finally {
             connection.setAutoCommit(autoCommit);
         }

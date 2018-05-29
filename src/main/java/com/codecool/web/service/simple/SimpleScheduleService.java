@@ -4,7 +4,6 @@ import com.codecool.web.dao.ScheduleDao;
 import com.codecool.web.model.Schedule;
 import com.codecool.web.service.ScheduleService;
 import com.codecool.web.service.exception.ScheduleException;
-import com.codecool.web.service.exception.ServiceException;
 import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
@@ -26,6 +25,7 @@ public class SimpleScheduleService implements ScheduleService {
         try {
             return scheduleDao.findByUserId(userId);
         } catch (IllegalArgumentException ex) {
+            logger.error("ARGUMENT MISSMATCH "+ex.getMessage());
             throw new ScheduleException("Couldnt find user");
         }
     }
@@ -40,21 +40,22 @@ public class SimpleScheduleService implements ScheduleService {
                 logger.info("SCHEDULE inserted into database");
             }
         } catch (ScheduleException ex) {
-            logger.error("SCHEDULE EXCEPTION "+ex.getMessage());
+            logger.warn("SCHEDULE EXCEPTION "+ex.getMessage());
         }
     }
 
     @Override
-    public Schedule getScheduleById(int scheduleId) throws SQLException, ServiceException {
+    public Schedule getScheduleById(int scheduleId) throws SQLException, ScheduleException {
         try {
             return scheduleDao.findByScheduleId(scheduleId);
         } catch (IllegalArgumentException ex) {
+            logger.error("ARGUMENT MISSMATCH "+ex.getMessage());
             throw new ScheduleException(ex.getMessage());
         }
     }
 
     @Override
-    public void deleteSchedule(int id) throws SQLException, ServiceException {
+    public void deleteSchedule(int id) throws SQLException {
         try {
             if (id == 0) {
                 throw new ScheduleException("Incorrect id");
@@ -63,7 +64,7 @@ public class SimpleScheduleService implements ScheduleService {
                 logger.info("SCHEDULE Deleted succesfully");
             }
         } catch (ScheduleException ex) {
-            logger.error(ex.getMessage());
+            logger.warn("SCHEDULE EXCEPTION THROWN "+ex.getMessage());
         }
     }
 }

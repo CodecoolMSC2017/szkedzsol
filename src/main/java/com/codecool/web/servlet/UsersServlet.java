@@ -7,9 +7,12 @@ import com.codecool.web.dao.database.DatabaseUserDao;
 import com.codecool.web.model.User;
 import com.codecool.web.service.ScheduleService;
 import com.codecool.web.service.UserService;
+import com.codecool.web.service.exception.ScheduleException;
 import com.codecool.web.service.exception.ServiceException;
+import com.codecool.web.service.exception.UserException;
 import com.codecool.web.service.simple.SimpleScheduleService;
 import com.codecool.web.service.simple.SimpleUserService;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,9 +25,11 @@ import java.util.List;
 
 @WebServlet("/protected/users")
 public class UsersServlet extends AbstractServlet {
+    final Logger logger = Logger.getLogger(UsersServlet.class);
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        logger.info("USERS SERVLET CALLED");
         try (Connection connection = getConnection(req.getServletContext())) {
             UserDao userDao = new DatabaseUserDao(connection);
             UserService userService = new SimpleUserService(userDao);
@@ -33,12 +38,12 @@ public class UsersServlet extends AbstractServlet {
             if (userService.isAdmin(tmpUser1)) {
                 try {
                     List<User> users = userService.getAllUsers();
-
                     req.setAttribute("users", users);
                     sendMessage(resp, 200, users);
+                    logger.debug("User list sent by DOGET");
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+                } catch (IOException e) {
+                    logger.warn("IOEXCEPTION "+e.getMessage());
                 }
             } else {
                 ScheduleDao scheduleDao = new DatabaseScheduleDao(connection);
@@ -47,9 +52,10 @@ public class UsersServlet extends AbstractServlet {
                 scheduleService.getSchedules(tmpUser.getId());
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ServiceException e) {
-            e.printStackTrace();
+            logger.warn("SQL EXCEPTION IN SERVLET "+e.getMessage() );
+        } catch (ScheduleException e) {
+            logger.warn("SERVICE EXCEPTION "+e.getMessage());
+
         }
     }
 }

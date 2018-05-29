@@ -26,6 +26,7 @@ public class SimpleTaskService implements TaskService {
         try {
             return taskDao.findByUserId(userId);
         } catch (IllegalArgumentException ex) {
+            logger.error("ARGUMENT MISSMATCH "+ex.getMessage());
             throw new TaskException(ex.getMessage());
         }
     }
@@ -41,7 +42,7 @@ public class SimpleTaskService implements TaskService {
 
             }
         } catch (TaskException ex) {
-            logger.error(ex.getMessage());
+            logger.warn("TASK EXCEPTION THROWN "+ex.getMessage());
         }
     }
 
@@ -50,6 +51,7 @@ public class SimpleTaskService implements TaskService {
         try{
             return taskDao.findByUserAndTaskId(taskId, userId);
         } catch (IllegalArgumentException ex) {
+            logger.error("ARGUMENT MISSMATCH "+ex.getMessage());
             throw new TaskException(ex.getMessage());
         }
     }
@@ -73,19 +75,19 @@ public class SimpleTaskService implements TaskService {
         try {
             if (!name.equals("") && !description.equals("") && description != null && name != null) {
                 taskDao.modifyTask(id, name, description);
-                logger.info("TASK MODIFIED SUCCESSFULLY");
+                logger.info("TASK MODIFIED SUCCESSFULLY WITH ALL FIELDS");
             } else if (!name.equals("") && name != null && description.equals("") || description == null) {
                 taskDao.modifyTaskName(id, name);
-                logger.info("TASK MODIFIED SUCCESSFULLY");
+                logger.info("TASK MODIFIED SUCCESSFULLY WITH TWO FIELDS");
             } else if (!description.equals("") && description != null && name.equals("") || name == null) {
                 taskDao.modifyTaskDescription(id, description);
-                logger.info("TASK MODIFIED SUCCESSFULLY");
+                logger.info("TASK MODIFIED SUCCESSFULLY WITH TWO FIELDS");
             } else {
                 throw new TaskException("Fill at least one box");
             }
 
         } catch (TaskException ex) {
-            logger.error(ex.getMessage());
+            logger.warn(ex.getMessage());
         }
     }
 }

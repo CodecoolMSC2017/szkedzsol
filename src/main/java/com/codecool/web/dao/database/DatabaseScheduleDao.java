@@ -5,6 +5,7 @@ import com.codecool.web.model.Col;
 import com.codecool.web.model.Schedule;
 import com.codecool.web.model.Slot;
 import com.codecool.web.model.Task;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,6 +15,9 @@ public class DatabaseScheduleDao extends AbstractDao implements ScheduleDao {
     public DatabaseScheduleDao(Connection connection) {
         super(connection);
     }
+
+    final Logger logger = Logger.getLogger(DatabaseScheduleDao.class);
+
 
     @Override
     public List<Schedule> findAll() throws SQLException {
@@ -75,8 +79,9 @@ public class DatabaseScheduleDao extends AbstractDao implements ScheduleDao {
             statement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
+            logger.error("SQL EXCEPTION "+e.getMessage());
             connection.rollback();
-            throw e;
+
         } finally {
             connection.setAutoCommit(autoCommit);
         }
