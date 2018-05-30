@@ -49,8 +49,7 @@
             <input type="text" name="email" required>
             <p>Name</p>
             <input type="text" name="name" required>
-            <br>
-            <br>
+            <br><br>
             <button id="register-button" class="mainButton">Sign up</button>
         </form>
         <br>
@@ -64,17 +63,14 @@
             <input type="text" name="email" required>
             <p>Name</p>
             <input type="text" name="name" required>
-            <br>
-            <br>
+            <br><br>
             <button id="login-button" class="mainButton">Sign in</button>
         </form>
         <br>
         <button id="toregister-button" class="mainButton">Sign up</button>
     </div>
 
-    <br>
-    <br>
-    <br>
+    <br><br><br>
 
     <div id="profile-content" class="hidden content center-box">
         <h1>Profile</h1>
@@ -122,25 +118,18 @@
         <p>Name:
             <span id="schedule-name"></span>
         </p>
-        <br>
-        <br>
+        <br><br>
         <form id="how-many" onsubmit="return false;">
             <p>How many days do you need in your schedule?</p>
             <input type="number" min="0" max="7" name="howMany">
             <button onclick="onHowManyColClicked();">Add Days</button>
         </form>
-
-    </div>
-
-
     </div>
 
     <div id="schedule-tasks-content" class="hidden content center-box">
         <button id="load-tasks">Load</button>
         <div id="task-list-drop"></div>
-        <br>
-        <br>
-        <br>
+        <br><br><br>
 
         <form id="share-form" onsubmit="return false;">
             <button onclick="onScheduleShareClicked();">Share</button>
@@ -192,33 +181,35 @@
             <button onclick="onTaskModifyClicked();">Modify</button>
         </form>
         <p id="task-modify-error-message"></p>
-        <div id="users-content" class="hidden content center-box">
-            <h1>Registered users</h1>
-            <table id="users">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
+    </div>
 
-        <div id="share" class="content">
-        </div>
+    <div id="share" class="content">
+    </div>
 
-        <div id="back-to-profile-content" class="hidden content center-box">
-            <br>
-            <button onclick="onBackToProfileClicked();">Back to profile</button>
-        </div>
+    <div id="users-content" class="hidden content center-box">
+        <h1>Registered users</h1>
+        <table id="users">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 
-        <div id="logout-content" class="hidden content center-box">
-            <button id="logout-button">Logout</button>
-        </div>
+    <div id="back-to-profile-content" class="hidden content center-box">
+        <br>
+        <button onclick="onBackToProfileClicked();">Back to profile</button>
+    </div>
+
+    <div id="logout-content" class="hidden content center-box">
+        <button id="logout-button">Logout</button>
+    </div>
 
 </body>
 
