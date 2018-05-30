@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +18,7 @@
     <c:url value="/task.js" var="taskScriptUrl" />
     <c:url value="/tasks.js" var="tasksScriptUrl" />
     <c:url value="/users.js" var="usersScriptUrl" />
+    <c:url value="/share.js" var="shareScriptUrl" />
     <c:url value="/back-to-profile.js" var="backToProfileScriptUrl" />
     <c:url value="/logout.js" var="logoutScriptUrl" />
 
@@ -33,6 +35,7 @@
     <script src="${taskScriptUrl}"></script>
     <script src="${tasksScriptUrl}"></script>
     <script src="${usersScriptUrl}"></script>
+    <script src="${shareScriptUrl}"></script>
     <script src="${backToProfileScriptUrl}"></script>
     <script src="${logoutScriptUrl}"></script>
     <title>Schedule Master 2000</title>
@@ -69,14 +72,18 @@
         <button id="toregister-button" class="mainButton">Sign up</button>
     </div>
 
-    <br><br><br>
+    <br>
+    <br>
+    <br>
 
     <div id="profile-content" class="hidden content center-box">
         <h1>Profile</h1>
-        <p><strong>Email:</strong>
+        <p>
+            <strong>Email:</strong>
             <span id="user-email"></span>
         </p>
-        <p><strong>Name:</strong>
+        <p>
+            <strong>Name:</strong>
             <span id="user-name"></span>
         </p>
 
@@ -115,18 +122,29 @@
         <p>Name:
             <span id="schedule-name"></span>
         </p>
-        <br><br>
+        <br>
+        <br>
         <form id="how-many" onsubmit="return false;">
             <p>How many days do you need in your schedule?</p>
             <input type="number" min="0" max="7" name="howMany">
             <button onclick="onHowManyColClicked();">Add Days</button>
         </form>
+
+    </div>
+
+
     </div>
 
     <div id="schedule-tasks-content" class="hidden content center-box">
         <button id="load-tasks">Load</button>
         <div id="task-list-drop"></div>
-        <br><br><br>
+        <br>
+        <br>
+        <br>
+
+        <form id="share-form" onsubmit="return false;">
+            <button onclick="onScheduleShareClicked();">Share</button>
+        </form>
     </div>
 
     <div id="tasks-content" class="hidden content center-box">
@@ -143,13 +161,15 @@
             <tbody>
             </tbody>
         </table>
+
         <form id="task-form" onsubmit="return false;">
             <h2>Add new Task</h2>
             <p>Task Name</p>
             <input type="text" name="name" required>
             <p>Task Description</p>
             <input type="text" name="description" required>
-            <br><br>
+            <br>
+            <br>
             <button onclick="onTaskAddClicked();onTasksClicked();">Add</button>
         </form>
         <br>
@@ -172,32 +192,33 @@
             <button onclick="onTaskModifyClicked();">Modify</button>
         </form>
         <p id="task-modify-error-message"></p>
-    </div>
+        <div id="users-content" class="hidden content center-box">
+            <h1>Registered users</h1>
+            <table id="users">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
 
-    <div id="users-content" class="hidden content center-box">
-        <h1>Registered users</h1>
-        <table id="users">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
+        <div id="share" class="content">
+        </div>
 
-    <div id="back-to-profile-content" class="hidden content center-box">
-        <br>
-        <button onclick="onBackToProfileClicked();">Back to profile</button>
-    </div>
+        <div id="back-to-profile-content" class="hidden content center-box">
+            <br>
+            <button onclick="onBackToProfileClicked();">Back to profile</button>
+        </div>
 
-    <div id="logout-content" class="hidden content center-box">
-        <button id="logout-button">Logout</button>
-    </div>
+        <div id="logout-content" class="hidden content center-box">
+            <button id="logout-button">Logout</button>
+        </div>
 
 </body>
 
