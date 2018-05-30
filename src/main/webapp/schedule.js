@@ -94,6 +94,34 @@ function onLoadTasks() {
     xhr.send();
 }
 
+// RELOAD TASKS //
+function reloadTasksResponse() {
+    if (this.status === OK) {
+        clearMessages();
+        showContents(['schedule-tasks-content']);
+        reloadTasksRecieved(JSON.parse(this.responseText));
+    } else {
+        onOtherResponse(schedulesContentDivEl, this);
+    }
+}
+
+function reloadTasksRecieved(text) {
+    const taskTableEl = document.getElementById('tasks-list');
+    taskTableEl.remove();
+
+    const tasks = text;
+
+    const divEl = document.getElementById('task-list-drop');
+    divEl.appendChild(createTasksTable(tasks));
+}
+
+function reloadTasks() {
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', reloadTasksResponse);
+    xhr.open('GET', 'protected/tasks');
+    xhr.send();
+}
+
 function createTasksTableHeader() {
 
     const nameTdEl = document.createElement('td');
@@ -109,6 +137,7 @@ function createTasksTableHeader() {
 
 function createTasksTable(tasks) {
     const tableEl = document.createElement('table');
+    tableEl.setAttribute('id', 'tasks-list');
     tableEl.style.cssFloat = 'left';
     tableEl.appendChild(createTasksTableHeader());
     tableEl.appendChild(createTasksTableBody(tasks));
@@ -161,10 +190,12 @@ function createDropTableBody(dropTableElId) {
     getDataButtonEl.addEventListener('click', function () {
         readDropZone(tbodyEl, dropTableElId);                       //function calling arguments has changed
     });
+    getDataButtonEl.addEventListener('click', reloadTasks);
     getDataButtonEl.textContent = 'Save';
     clearButtonEl.addEventListener('click', function () {
         clearDropZone(tbodyEl);
     });
+    clearButtonEl.addEventListener('click', reloadTasks);
     clearButtonEl.textContent = 'Clear';
 
     tbodyEl.appendChild(getDataButtonEl);
