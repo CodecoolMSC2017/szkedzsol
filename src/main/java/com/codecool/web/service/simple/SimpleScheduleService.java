@@ -8,6 +8,8 @@ import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class SimpleScheduleService implements ScheduleService {
 
@@ -67,4 +69,17 @@ public class SimpleScheduleService implements ScheduleService {
             logger.warn("SCHEDULE EXCEPTION THROWN "+ex.getMessage());
         }
     }
+
+    public void taskToSchedule(String colName, int scheduleId, Map<Integer, Integer> taskIdWithStart) throws SQLException {
+        int colId = new Random().nextInt(1000);
+        scheduleDao.updateColToSchedule(scheduleId, colId);
+        scheduleDao.insertSlotToCol(colId, colName, scheduleId);
+        for(Map.Entry<Integer, Integer> task : taskIdWithStart.entrySet()) {
+        int slotId = new Random().nextInt(1000);
+            scheduleDao.insertTaskToSlot(slotId, colId, task.getKey(), task.getValue());
+            scheduleDao.taskToSlotInsert(slotId,task.getKey(),scheduleId);
+        }
+    }
+
+
 }

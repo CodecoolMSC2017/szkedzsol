@@ -7,6 +7,7 @@ import com.codecool.web.service.exception.ServiceException;
 import javax.security.sasl.SaslClient;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public interface ScheduleService {
 
@@ -17,4 +18,7 @@ public interface ScheduleService {
     Schedule getScheduleById(int scheduleId) throws SQLException, ScheduleException;
 
     void deleteSchedule(int id) throws SQLException;
+
+    void taskToSchedule(String colName, int scheduleId, Map<Integer, Integer> taskIdWithStart) throws SQLException;
+
 }

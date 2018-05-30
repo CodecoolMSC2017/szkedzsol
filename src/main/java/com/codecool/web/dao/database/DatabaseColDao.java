@@ -48,8 +48,8 @@ public class DatabaseColDao extends AbstractDao implements ColDao {
     public void insertCol(String name, int schedule_id) throws SQLException {
         String sql = "INSERT INTO col (name, schedule_id)VALUES(?, ?);";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(2, name);
-            statement.setInt(3, schedule_id);
+            statement.setString(1, name);
+            statement.setInt(2, schedule_id);
             statement.executeUpdate();
         }
     }

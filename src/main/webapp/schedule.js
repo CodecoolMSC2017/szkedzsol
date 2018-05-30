@@ -269,25 +269,27 @@ function drag_drop(event) {
 function drag_end(event) {
     droppedIn = false;
 }
+
 function readDropZone(tbodyEl, dropTableElId) {
-    const dayName = document.getElementById(dropTableElId + 'nameIn')
-    let tasks = new Map();
+    const dayName = document.getElementById(dropTableElId + 'nameIn');
+    const scheduleId = document.getElementById('schedule-id');
+    let tasks = {};
     for (var j = 0; j < tbodyEl.children.length - 2; j++) {
         let taskObj = tbodyEl.children[j].children["0"].children["0"].children["0"];
         let taskTime = tbodyEl.children[j].children["0"].children["0"].value;
         if (tbodyEl.contains(taskObj)) {
-            tasks.set(taskObj.id, taskTime);
+            tasks[taskObj.id] = taskTime;
         }
     }
-    console.log(tasks);
-    /*const data = JSON.stringify({ "dropTableElId": dropTableElId, "dayName": dayName, "tasks": tasks });
+    const data = JSON.stringify({ "scheduleId": scheduleId.textContent, "dayName": dayName.value, "tasks": tasks });
     const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onTaskReloadResponse);
+    xhr.addEventListener('load', reloadTasks);
     xhr.addEventListener('error', onNetworkError);
     xhr.open('PUT', 'protected/schedule');
     xhr.setRequestHeader("Content-type", "application/json");
-    xhr.send(data);*/
+    xhr.send(data);
 }
+
 function clearDropZone(tbodyEl) {
     const columntables = document.getElementsByClassName('columntable');
     for (let j = 0; j < tbodyEl.children.length -2; j++) {

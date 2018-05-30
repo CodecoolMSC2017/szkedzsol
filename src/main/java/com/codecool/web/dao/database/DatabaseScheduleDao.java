@@ -93,7 +93,45 @@ public class DatabaseScheduleDao extends AbstractDao implements ScheduleDao {
         int user_id = resultSet.getInt("user_id");
         String name = resultSet.getString("name");
         return new Schedule(id, user_id, name);
-
     }
 
+    public void insertTaskToSlot(int slotId, int colId, int taskId, int taskStart) throws SQLException {
+        String sql = "INSERT INTO slot (id, col_id, task_id, start)VALUES(?,?,?,?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, slotId);
+            statement.setInt(2, colId);
+            statement.setInt(3, taskId);
+            statement.setInt(4, taskStart);
+            statement.executeUpdate();
+        }
+    }
+
+    public void insertSlotToCol(int colId, String colName, int scheduleId) throws SQLException {
+        String sql = "INSERT INTO col (id, name, schedule_id)VALUES(?,?,?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, colId);
+            statement.setString(2, colName);
+            statement.setInt(3, scheduleId);
+            statement.executeUpdate();
+        }
+    }
+
+    public void updateColToSchedule(int scheduleId, int colId) throws SQLException {
+        String sql = "UPDATE schedule SET col_id = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, colId);
+            statement.setInt(2, scheduleId);
+            statement.executeUpdate();
+        }
+    }
+
+    public void taskToSlotInsert(int slotId,int taskId,int scheduleId)throws SQLException {
+        String sql = "INSERT INTO slot_tasks (slot_id, task_id, schedule_id) VALUES (?,?,?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1,slotId);
+            statement.setInt(2,taskId);
+            statement.setInt(3,scheduleId);
+            statement.executeUpdate();
+        }
+    }
 }

@@ -44,11 +44,10 @@ public class DatabaseSlotDao extends AbstractDao implements SlotDao {
 
     @Override
     public void insertSlot(int col_id, int start, int stop) throws SQLException {
-        String sql = "INSERT INTO slot (col_id, start, stop) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO slot (col_id, start) VALUES (?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, col_id);
             statement.setInt(2, start);
-            statement.setInt(3, stop);
             statement.executeUpdate();
         }
     }
@@ -58,8 +57,7 @@ public class DatabaseSlotDao extends AbstractDao implements SlotDao {
         int id = resultSet.getInt("id");
         int col_id = resultSet.getInt("col_id");
         int start = resultSet.getInt("start");
-        int stop = resultSet.getInt("stop");
-        return new Slot(id, col_id, start, stop);
+        return new Slot(id, col_id, start);
     }
 
 }

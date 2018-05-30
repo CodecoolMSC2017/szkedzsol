@@ -22,4 +22,12 @@ public interface ScheduleDao {
     Schedule fetchSchedule(ResultSet resultSet) throws SQLException;
 
     Schedule findByScheduleId(int scheduleId) throws SQLException;
+
+    void insertTaskToSlot(int slotId, int colId, int taskId, int taskStart) throws SQLException;
+
+    void insertSlotToCol(int colId, String colName, int scheduleId) throws SQLException;
+
+    void updateColToSchedule(int scheduleId, int colId) throws SQLException;
+
+    void taskToSlotInsert(int slotId,int taskId,int scheduleId)throws SQLException;
 }

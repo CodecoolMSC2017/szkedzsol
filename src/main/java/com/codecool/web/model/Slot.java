@@ -3,14 +3,12 @@ package com.codecool.web.model;
 public class Slot extends AbstractModel {
     private int col_id;
     private int start;
-    private int stop;
 
     //CONSTRUCTOR
-    public Slot(int id, int col_id, int start, int stop) {
+    public Slot(int id, int col_id, int start) {
         super(id);
         this.col_id = col_id;
         this.start = start;
-        this.stop = stop;
     }
 
 
@@ -21,9 +19,5 @@ public class Slot extends AbstractModel {
 
     public int getStart() {
         return start;
-    }
-
-    public int getStop() {
-        return stop;
     }
 }
