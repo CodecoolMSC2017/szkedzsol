@@ -1,8 +1,11 @@
 package com.codecool.web.model;
 
+import java.util.List;
+
 public class Slot extends AbstractModel {
     private int col_id;
     private int start;
+    private List<Task> tasks;
 
     //CONSTRUCTOR
     public Slot(int id, int col_id, int start) {
@@ -19,5 +22,13 @@ public class Slot extends AbstractModel {
 
     public int getStart() {
         return start;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }

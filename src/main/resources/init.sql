@@ -42,9 +42,11 @@ CREATE TABLE slot_tasks (
     slot_id INTEGER,
     task_id INTEGER,
     schedule_id INTEGER,
+    col_id INTEGER,
     FOREIGN KEY(slot_id)REFERENCES slot(id),
     FOREIGN KEY(task_id)REFERENCES task(id),
-    FOREIGN KEY(schedule_id)REFERENCES schedule(id)
+    FOREIGN KEY(schedule_id)REFERENCES schedule(id),
+    FOREIGN KEY(col_id)REFERENCES col(id)
 );
 INSERT INTO users (name, email, role) VALUES
 	('user1','user1@user1','ADMIN'), -- 1

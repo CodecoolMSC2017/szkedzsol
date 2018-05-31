@@ -21,6 +21,7 @@
     <c:url value="/share.js" var="shareScriptUrl" />
     <c:url value="/back-to-profile.js" var="backToProfileScriptUrl" />
     <c:url value="/logout.js" var="logoutScriptUrl" />
+    <c:url value="/viewschedule.js" var="viewscheduleScriptUrl" />
 
     <link rel="stylesheet" type="text/css" href="${styleUrl}">
     <link rel="stylesheet" type="text/css" href="${indexUrl}">
@@ -38,6 +39,7 @@
     <script src="${shareScriptUrl}"></script>
     <script src="${backToProfileScriptUrl}"></script>
     <script src="${logoutScriptUrl}"></script>
+    <script src="${viewscheduleScriptUrl}"></script>
     <title>Schedule Master 2000</title>
 </head>
 
@@ -118,7 +120,7 @@
         <p>Name:
             <span id="schedule-name"></span>
         </p>
-        <button id="editButton" onclick="reloadTasks();">Edit</button>
+        <button id="editButton" onclick="onViewClicked();">Edit</button>
         <br><br>
         <form id="how-many" onsubmit="return false;">
             <p>How many days do you need in your schedule?</p>
@@ -200,6 +202,9 @@
             <tbody>
             </tbody>
         </table>
+    </div>
+    <div id="view-schedule" class="hidden content center-box">
+        <h1>Schedule read only</h1>
     </div>
      <div id="shared-schedule" class="hidden content center-box">
             <h1>Shared Schedule read only</h1>

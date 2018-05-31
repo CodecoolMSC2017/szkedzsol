@@ -1,5 +1,6 @@
 package com.codecool.web.dao;
 
+import com.codecool.web.dto.ScheduleDto;
 import com.codecool.web.model.Col;
 import com.codecool.web.model.Schedule;
 import com.codecool.web.model.Slot;
@@ -29,5 +30,7 @@ public interface ScheduleDao {
 
     void updateColToSchedule(int scheduleId, int colId) throws SQLException;
 
-    void taskToSlotInsert(int slotId,int taskId,int scheduleId)throws SQLException;
+    void taskToSlotInsert(int slotId,int taskId,int scheduleId, int colId)throws SQLException;
+
+    List<ScheduleDto> getScheduleDtoByScheduleId(int scheduleId) throws SQLException;
 }

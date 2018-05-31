@@ -1,8 +1,11 @@
 package com.codecool.web.model;
 
+import java.util.List;
+
 public class Schedule extends AbstractModel {
     private int user_id;
     private String name;
+    private List<Col> cols;
 
 
     //CONSTRUCTOR
@@ -22,5 +25,11 @@ public class Schedule extends AbstractModel {
         return name;
     }
 
+    public List<Col> getCols() {
+        return cols;
+    }
 
+    public void setCols(List<Col> cols) {
+        this.cols = cols;
+    }
 }
