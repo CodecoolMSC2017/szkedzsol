@@ -15,6 +15,7 @@ let scheduleTasksContentDivEl;
 let taskListDropDivEl;
 let backToProfileContentDivEl;
 let logoutContentDivEl;
+let sharedSchedulesContentDivEl;
 
 function newInfo(targetEl, message) {
     newMessage(targetEl, 'info', message);
@@ -115,6 +116,7 @@ function onLoad() {
     schedulesContentDivEl = document.getElementById('schedules-content');
     scheduleTasksContentDivEl = document.getElementById('schedule-tasks-content');
     taskListDropDivEl = document.getElementById('task-list-drop');
+    sharedSchedulesContentDivEl = document.getElementById('shared-schedule');
     backToProfileContentDivEl = document.getElementById('back-to-profile-content');
     logoutContentDivEl = document.getElementById('logout-content');
 

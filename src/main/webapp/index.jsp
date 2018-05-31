@@ -132,7 +132,7 @@
         <br><br><br>
 
         <form id="share-form" onsubmit="return false;">
-            <button onclick="onScheduleShareClicked();">Share</button>
+            <button id='shareButton' onclick="onScheduleShareClicked();">Share</button>
         </form>
     </div>
 
@@ -201,6 +201,9 @@
             </tbody>
         </table>
     </div>
+     <div id="shared-schedule" class="hidden content center-box">
+            <h1>Shared Schedule read only</h1>
+        </div>
 
     <div id="back-to-profile-content" class="hidden content center-box">
         <br>
