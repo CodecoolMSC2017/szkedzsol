@@ -127,7 +127,7 @@
     </div>
 
     <div id="schedule-tasks-content" class="hidden content center-box">
-        <button id="load-tasks">Load</button>
+        <!--<button id="load-tasks">Load</button>-->
         <div id="task-list-drop"></div>
         <br><br><br>
 

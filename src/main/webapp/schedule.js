@@ -78,19 +78,22 @@ function createTasksTableBody(tasks) {
     return tbodyEl;
 }
 function onTasksReceived(text) {
+    const divEl = document.getElementById('task-list-drop');
+    while(divEl.firstChild) {
+        divEl.removeChild(divEl.firstChild);
+    }
     let loadButtonEl = document.getElementById('load-tasks');
-    loadButtonEl.remove();
+    //loadButtonEl.remove();
 
     const tasks = text;
 
-    const divEl = document.getElementById('task-list-drop');
     divEl.appendChild(createTasksTable(tasks));
 }
 
 function onLoadTasks() {
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onTasksReceived);
-    xhr.open('GET', 'protected/tasks' + params.toString());
+    xhr.open('GET', 'protected/tasks');
     xhr.send();
 }
 
