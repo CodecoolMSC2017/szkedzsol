@@ -43,6 +43,18 @@ function onHowManyColClicked() {
     xhr.send();
 }
 
+function showDescription(task, objDivEl) {
+    let descriptionText = task.description;
+    let taskName = task.name;
+    /*if(objDivEl.textContent == task.name) {
+        objDivEl.textContent = descriptionText;
+    } else {
+        objDivEl.textContent = taskName;
+    }*/
+    var popup = document.getElementById("myPopup"+task.id);
+    popup.classList.toggle("show");
+}
+
 function createTasksTableBody(tasks) {
     const tbodyEl = document.createElement('tbody');
 
@@ -58,19 +70,28 @@ function createTasksTableBody(tasks) {
 
 
         const objDivEl = document.createElement('div');
+
+        const objSpanEl = document.createElement('span');
+        objSpanEl.setAttribute('class', 'taskDescription');
+        objSpanEl.setAttribute('id', 'myPopup'+task.id);
+        objSpanEl.textContent = task.description;
+
         objDivEl.setAttribute('class', "objects");
         objDivEl.textContent = task.name;
         objDivEl.setAttributeNode(dataUserIdAttr);
         objDivEl.setAttribute('draggable', true);
         objDivEl.setAttribute('ondragstart', 'drag_start(event)');
         objDivEl.setAttribute('ondragend', 'drag_end(event)');
-        objDivEl.addEventListener('click', onLoadTasks);
+        objDivEl.addEventListener('click', function () {showDescription(task, objDivEl);});
 
 
 
         // creating row
         const trEl = document.createElement('tr');
         objTdEl.appendChild(objDivEl);
+
+        objDivEl.appendChild(objSpanEl);
+
         trEl.appendChild(objTdEl);
         tbodyEl.appendChild(trEl);
     }
