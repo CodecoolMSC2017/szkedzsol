@@ -118,6 +118,7 @@
         <p>Name:
             <span id="schedule-name"></span>
         </p>
+        <button id="editButton" onclick="reloadTasks();">Edit</button>
         <br><br>
         <form id="how-many" onsubmit="return false;">
             <p>How many days do you need in your schedule?</p>

@@ -54,5 +54,5 @@ function onTaskModifyClicked() {
     } else {
         err.textContent = 'Fill at least one box';
     }
-    
+
 }
