@@ -27,6 +27,10 @@ function onViewResponse() {
 function onViewRecieve(text) {
     const scheduleDtoList = text;
     const schedDivEl = document.getElementById("view-schedule");
+    const schedules = [];
+    const cols = [];
+    const slots = [];
+    const tasks = [];
 
     for (let i = 0; i < scheduleDtoList.length; i++) {
         let scheduleDto = scheduleDtoList[i];
@@ -34,12 +38,69 @@ function onViewRecieve(text) {
         let col = scheduleDto.col;
         let slot = scheduleDto.slot;
         let task = scheduleDto.task;
-        console.log(schedule);
-        console.log(col);
-        console.log(slot);
-        console.log(task);
+
+        //FILL SCHEDULES LIST
+        schedules.push(schedule);
+        //console.log(schedules[i].name);
+
+        //FILL COLS LIST
+        cols.push(col);
+       // console.log(cols[i].name);
+
+        //FILL SLOTS LIST
+        slots.push(slot);
+       // console.log(slots[i].id);
+        //console.log("From "+ slots[i].start);
+
+        //FILL TASKS LIST
+        tasks.push(task);
+        //console.log(tasks[i].name);
 
     }
+
+    //CREATE TABLE ELEMENTS
+    const tableDivEl = document.createElement('table');
+    tableDivEl.setAttribute('id', 'vTable');
+
+    const tHeadEl = document.createElement('thead');
+    tHeadEl.setAttribute('id', 'viewTabHead');
+    const colName = document.createElement('p');
+    colName.setAttribute('id', 'vtheadName');
+    const tBodyEl = document.createElement('tbody');
+
+
+    for(let j = 0; j < tasks.length; j++){
+    const trEl = document.createElement('tr');
+    const tdEl = document.createElement('td');
+
+
+    const slotContent = document.createElement('p');
+    const slotTime = document.createElement('p');
+
+        if(cols[j].name === cols[0].name){
+
+            colName.innerHTML = cols[0].name
+
+
+            console.log(tasks[j].name);
+            slotTime.innerHTML = 'From '+slots[j].start;
+            slotContent.innerHTML = tasks[j].name;
+
+            //DISPLAY ONE DAY
+
+                    tdEl.appendChild(slotTime);
+                    tdEl.appendChild(slotContent);
+                    trEl.appendChild(tdEl);
+                    tBodyEl.appendChild(trEl);
+
+                    tableDivEl.appendChild(tBodyEl);
+        }
+
+    }
+
+        tHeadEl.appendChild(colName);
+        tableDivEl.appendChild(tHeadEl);
+    schedDivEl.appendChild(tableDivEl);
 }
 
 function createViewTable(schedule, col, slot, task, colNums) {
