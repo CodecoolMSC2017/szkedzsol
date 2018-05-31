@@ -43,15 +43,8 @@ function onHowManyColClicked() {
     xhr.send();
 }
 
-function showDescription(task, objDivEl) {
-    let descriptionText = task.description;
-    let taskName = task.name;
-    /*if(objDivEl.textContent == task.name) {
-        objDivEl.textContent = descriptionText;
-    } else {
-        objDivEl.textContent = taskName;
-    }*/
-    var popup = document.getElementById("myPopup"+task.id);
+function showDescription(task) {
+    var popup = document.getElementById("myPopup" + task.id);
     popup.classList.toggle("show");
 }
 
@@ -73,7 +66,7 @@ function createTasksTableBody(tasks) {
 
         const objSpanEl = document.createElement('span');
         objSpanEl.setAttribute('class', 'taskDescription');
-        objSpanEl.setAttribute('id', 'myPopup'+task.id);
+        objSpanEl.setAttribute('id', 'myPopup' + task.id);
         objSpanEl.textContent = task.description;
 
         objDivEl.setAttribute('class', "objects");
@@ -82,7 +75,7 @@ function createTasksTableBody(tasks) {
         objDivEl.setAttribute('draggable', true);
         objDivEl.setAttribute('ondragstart', 'drag_start(event)');
         objDivEl.setAttribute('ondragend', 'drag_end(event)');
-        objDivEl.addEventListener('click', function () {showDescription(task, objDivEl);});
+        objDivEl.addEventListener('click', function () { showDescription(task); });
 
 
 
@@ -100,7 +93,7 @@ function createTasksTableBody(tasks) {
 }
 function onTasksReceived(text) {
     const divEl = document.getElementById('task-list-drop');
-    while(divEl.firstChild) {
+    while (divEl.firstChild) {
         divEl.removeChild(divEl.firstChild);
     }
     let loadButtonEl = document.getElementById('load-tasks');
@@ -201,7 +194,7 @@ function createDropTableBody(dropTableElId) {
         //clearButtonEl.setAttribute('drop_zone', dropTableElId+(counter+2));
 
         dropDivEl.setAttribute('contentEditable', false);
-        dropDivEl.setAttribute('data-text',(counter + "-" + (counter+1)));
+        dropDivEl.setAttribute('data-text', (counter + "-" + (counter + 1)));
 
         dropTdEl.appendChild(dropDivEl);
 
@@ -307,7 +300,7 @@ function readDropZone(tbodyEl, dropTableElId) {
     }
     const data = JSON.stringify({ "scheduleId": scheduleId.textContent, "dayName": dayName.value, "tasks": tasks });
     const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', reloadTasks);
+    xhr.addEventListener('load', function () { reloadTasks(); removeTable(dropTableElId); });
     xhr.addEventListener('error', onNetworkError);
     xhr.open('PUT', 'protected/schedule');
     xhr.setRequestHeader("Content-type", "application/json");
@@ -316,7 +309,7 @@ function readDropZone(tbodyEl, dropTableElId) {
 
 function clearDropZone(tbodyEl) {
     const columntables = document.getElementsByClassName('columntable');
-    for (let j = 0; j < tbodyEl.children.length -2; j++) {
+    for (let j = 0; j < tbodyEl.children.length - 2; j++) {
         for (let i = 0; i < tbodyEl.children[j].children.length; i++) {
             let delObj = tbodyEl.children[j].children[i].children["0"].children["0"];
             if (delObj != null) {
@@ -324,5 +317,16 @@ function clearDropZone(tbodyEl) {
             }
         }
     }
+}
+
+function removeTable(dropTableElId) {
+    const contentDivEl = document.getElementById('task-list-drop');
+    const delTable = document.getElementById(dropTableElId);
+    for(let i = 0; i < contentDivEl.children.length; i++) {
+        if (contentDivEl.children[i].id === dropTableElId) {
+            contentDivEl.removeChild(delTable);
+        }
+    }
+    alert("Day has been saved");
 }
 
