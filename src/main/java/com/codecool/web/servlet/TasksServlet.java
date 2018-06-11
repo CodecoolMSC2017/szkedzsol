@@ -64,7 +64,6 @@ public class TasksServlet extends AbstractServlet {
             int userId = user.getId();
             String name = req.getParameter("name");
             String description = req.getParameter("description");
-            //    System.out.println(description+"dakokapitany");
             taskService.addTask(name, description, userId);
             doGet(req, resp);
             logger.info("TASKS SERVLET DO POST SUCCESFULL");

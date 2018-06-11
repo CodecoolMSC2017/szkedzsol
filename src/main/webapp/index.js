@@ -16,6 +16,7 @@ let taskListDropDivEl;
 let backToProfileContentDivEl;
 let logoutContentDivEl;
 let sharedSchedulesContentDivEl;
+let loginGoogleContentDivEl;
 
 function newInfo(targetEl, message) {
     newMessage(targetEl, 'info', message);
@@ -119,6 +120,7 @@ function onLoad() {
     sharedSchedulesContentDivEl = document.getElementById('shared-schedule');
     backToProfileContentDivEl = document.getElementById('back-to-profile-content');
     logoutContentDivEl = document.getElementById('logout-content');
+    loginGoogleContentDivEl = document.getElementById('g-signin2');
 
     const registerButtonEl = document.getElementById('register-button');
     registerButtonEl.addEventListener('click', onRegisterButtonClick);

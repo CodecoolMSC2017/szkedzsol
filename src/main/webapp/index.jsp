@@ -21,8 +21,8 @@
     <c:url value="/share.js" var="shareScriptUrl" />
     <c:url value="/back-to-profile.js" var="backToProfileScriptUrl" />
     <c:url value="/logout.js" var="logoutScriptUrl" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <c:url value="/viewschedule.js" var="viewscheduleScriptUrl" />
-
     <link rel="stylesheet" type="text/css" href="${styleUrl}">
     <link rel="stylesheet" type="text/css" href="${indexUrl}">
 
@@ -59,6 +59,7 @@
     </div>
 
     <div id="login-content" class="hidden content">
+        <meta name="google-signin-client_id" content="429697848140-q1h0ncjk2ejk6jk3huh3e93aoh4ef7ju.apps.googleusercontent.com">
         <h1>Login</h1>
         <form id="login-form" onsubmit="return false;">
             <p>Email</p>
@@ -68,6 +69,7 @@
             <br><br>
             <button id="login-button" class="mainButton">Sign in</button>
         </form>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
         <br>
         <button id="toregister-button" class="mainButton">Sign up</button>
     </div>
@@ -120,7 +122,7 @@
         <p>Name:
             <span id="schedule-name"></span>
         </p>
-        <button id="editButton" onclick="onViewClicked();">Edit</button>
+        <button id="editButton" onclick="onViewClicked();">View</button>
         <br><br>
         <form id="how-many" onsubmit="return false;">
             <p>How many days do you need in your schedule?</p>
@@ -217,6 +219,7 @@
 
     <div id="logout-content" class="hidden content center-box">
         <button id="logout-button">Logout</button>
+        <a href="#" onclick="signOut();">Sign out</a>
     </div>
 
 </body>
