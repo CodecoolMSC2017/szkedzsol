@@ -3,7 +3,7 @@ function onLogoutResponse() {
         setUnauthorized();
         clearMessages();
         hideMenuContent();
-        showContents(['login-content'])
+        showContents(['register-content'])
     } else {
         onOtherResponse(logoutContentDivEl, this);
     }

@@ -45,6 +45,7 @@
 
 <body>
     <div id="register-content" class="content">
+    <meta name="google-signin-client_id" content="429697848140-q1h0ncjk2ejk6jk3huh3e93aoh4ef7ju.apps.googleusercontent.com">
         <h1>Register</h1>
         <form id="register-form" onsubmit="return false;">
             <p>Email</p>
@@ -56,10 +57,12 @@
         </form>
         <br>
         <button id="tologin-button" class="mainButton">Already registered</button>
+        <br><br>
+        <div class="g-signin2" data-width="200px" data-height="50px" data-theme="dark" data-onsuccess="onSignIn"></div>
     </div>
 
     <div id="login-content" class="hidden content">
-        <meta name="google-signin-client_id" content="429697848140-q1h0ncjk2ejk6jk3huh3e93aoh4ef7ju.apps.googleusercontent.com">
+
         <h1>Login</h1>
         <form id="login-form" onsubmit="return false;">
             <p>Email</p>
@@ -69,9 +72,9 @@
             <br><br>
             <button id="login-button" class="mainButton">Sign in</button>
         </form>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
         <br>
         <button id="toregister-button" class="mainButton">Sign up</button>
+
     </div>
 
     <br><br><br>
