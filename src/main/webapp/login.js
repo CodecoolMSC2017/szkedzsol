@@ -36,23 +36,18 @@ function toRegisterButtonClick() {
 }
 
 function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  const email = profile.getEmail();
-  const name = profile.getName();
 
 
-  const params = new URLSearchParams();
-  params.append('email',email);
-  params.append('name',name);
+  const id_token = googleUser.getAuthResponse().id_token;
+
+
 
   const xhr = new XMLHttpRequest();
   xhr.addEventListener('load', onGoogleLoginResponse);
   xhr.addEventListener('error', onNetworkError);
   xhr.open('POST', 'googlelogin');
-  const data = JSON.stringify({ "email": email, "name": name});
-  console.log(data);
-  xhr.setRequestHeader("Content-type", "application/json");
-  xhr.send(data);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send('idtoken=' + id_token);
 }
 
 function onGoogleLoginResponse() {
