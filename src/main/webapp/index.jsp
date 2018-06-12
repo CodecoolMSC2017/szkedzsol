@@ -111,9 +111,9 @@
         <br>
 
         <form id="add-schedule-form" onsubmit="return false;">
-            <input type="text" name="scheduleTitle" placeholder="Schedule name" required>
-            <br>
-            <button onclick="onScheduleAddClicked(); onSchedulesClicked();">Add New Schedule</button>
+            <input id="newScheduleInput"type="text" name="scheduleTitle" placeholder="Schedule name" required>
+            <br><br>
+            <button id="addNewScheduleButton" onclick="onScheduleAddClicked(); onSchedulesClicked();">Add New Schedule</button>
         </form>
     </div>
 
@@ -125,12 +125,12 @@
         <p>Name:
             <span id="schedule-name"></span>
         </p>
-        <button id="editButton" onclick="onViewClicked();">View</button>
+        <button id="viewScheduleButton" onclick="onViewClicked();">View</button>
         <br><br>
         <form id="how-many" onsubmit="return false;">
             <p>How many days do you need in your schedule?</p>
             <input type="number" min="0" max="7" name="howMany">
-            <button onclick="onHowManyColClicked();">Add Days</button>
+            <button id="addDaysToScheduleButton" onclick="onHowManyColClicked();">Add Days</button>
         </form>
     </div>
 
@@ -166,7 +166,7 @@
             <input type="text" name="description" required>
             <br>
             <br>
-            <button onclick="onTaskAddClicked();onTasksClicked();">Add</button>
+            <button id="addNewTaskButton" onclick="onTaskAddClicked();onTasksClicked();">Add</button>
         </form>
         <br>
     </div>
@@ -185,7 +185,7 @@
         <form id="modify-task-form" onsubmit="return false;">
             <input type="text" name="name" placeholder="Task name">
             <input type="text" name="description" placeholder="Task description">
-            <button onclick="onTaskModifyClicked();">Modify</button>
+            <button id="modifyTaskButton" onclick="onTaskModifyClicked();">Modify</button>
         </form>
         <p id="task-modify-error-message"></p>
     </div>

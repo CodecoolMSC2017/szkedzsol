@@ -250,3 +250,60 @@ table {
 #vtheadName{
     color:white;
 }
+
+/* test add new schedule input field style */
+#newScheduleInput {
+    background-color: white;
+    border-radius: 6px;
+    border-color:lightslategrey;
+    border-width:3px;
+    color: black;
+    position:sticky;
+    width: 175px;
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* test button style */
+#addNewScheduleButton {
+    background-color: lightslategrey;
+    border-radius: 6px;
+    border-color:lightslategrey;
+    border-width:3px;
+    color: white;
+    position:sticky;
+
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#addNewScheduleButton:hover {
+    background: green;
+    color:white;
+}
+
+#viewScheduleButton {
+
+}
+
+#addDaysToScheduleButton {
+
+}
+
+#shareButton {
+
+}
+
+#addNewTaskButton {
+
+}
+
+#modifyTaskButton {
+
+}
+
+
