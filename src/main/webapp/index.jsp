@@ -81,6 +81,7 @@
 
     <div id="profile-content" class="hidden content center-box">
         <h1>Profile</h1>
+        <div id="profilePicture"></div>
         <p>
             <strong>Email:</strong>
             <span id="user-email"></span>
