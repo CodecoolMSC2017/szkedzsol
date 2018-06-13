@@ -29,6 +29,7 @@ function onViewResponse() {
 function onViewRecieve(text) {
     const scheduleDtoList = text;
     schedDivEl = document.getElementById("view-schedule");
+    schedDivEl.textContent = null;
     const schedules = [];
     const cols = [];
     const slots = [];
@@ -52,7 +53,7 @@ function onViewRecieve(text) {
 
         //FILL SLOTS LIST
         slots.push(slot);
-       // console.log(slots[i].id);
+        // console.log(slots[i].id);
         //console.log("From "+ slots[i].start);
 
         //FILL TASKS LIST
@@ -60,20 +61,20 @@ function onViewRecieve(text) {
         //console.log(tasks[i].name);
 
         //SLOT WITH TASK
-        slotTask[i] = [slot,task];
+        slotTask[i] = [slot, task, col];
 
     }
 
     let colNames = separateCols(cols);
     let uniqueNames = new Set(colNames);
 
-    createViewTable(uniqueNames,slotTask);
+    createViewTable(uniqueNames, slotTask);
 }
 
 function separateCols(cols) {
     const colNames = [];
-    for(let k = 0; k < cols.length; k++){
-        if(cols[k].name === cols[0].name){
+    for (let k = 0; k < cols.length; k++) {
+        if (cols[k].name === cols[0].name) {
             colNames.push(cols[0].name);
         }
         else if (cols[k] !== cols[0].name) {
@@ -83,22 +84,25 @@ function separateCols(cols) {
     return colNames;
 }
 
-function createViewTableBody(tableDivElId,slotTask) {
+function createViewTableBody(tableDivElId, slotTask) {
     const tbodyEl = document.createElement('tbody');
     const viewTableEl = document.getElementById(tableDivElId);
 
-    for(let l = 0; l < slotTask.length; l++){
-    const trEl = document.createElement('tr');
-    const tdEl = document.createElement('td');
-    tdEl.textContent = 'From '+ slotTask[l][0].start + ':00 ' + slotTask[l][1].name;
-    trEl.appendChild(tdEl);
-    tbodyEl.appendChild(trEl);
+    slotTask = slotTask.sort(compare);
+    for (let l = 0; l < slotTask.length; l++) {
+        const trEl = document.createElement('tr');
+        const tdEl = document.createElement('td');
+        if (tableDivElId == slotTask[l][2].name) {
+            tdEl.textContent = 'From ' + slotTask[l][0].start + ':00 ' + slotTask[l][1].name;
+            trEl.appendChild(tdEl);
+            tbodyEl.appendChild(trEl);
+        }
     }
 
     return tbodyEl;
 }
 
-function createViewTableHead(tableDivElId,uniqueNames) {
+function createViewTableHead(tableDivElId, uniqueNames) {
 
     const theadEl = document.createElement('thead');
     const tableDivEl = document.getElementById('viewTable');
@@ -111,19 +115,26 @@ function createViewTableHead(tableDivElId,uniqueNames) {
     return theadEl;
 }
 
-function createViewTable(uniqueNames,slotTask) {
-    let number = uniqueNames.size;
-    for (let i = 0; i < number; i++) {
+function createViewTable(uniqueNames, slotTask) {
+    uniqueNames.forEach((key, value) => {
         const tableDivEl = document.createElement('table');
-        tableDivEl.setAttribute("id", "viewTable" + i);
+        tableDivEl.setAttribute("id", value);
         tableDivEl.style.cssFloat = 'left';
         const tableDivElId = tableDivEl.id;
-        const viewTableBodyEl = createViewTableBody(tableDivElId,slotTask);
-        const viewTableHeadEl = createViewTableHead(tableDivElId,uniqueNames[i]);
+        const viewTableBodyEl = createViewTableBody(tableDivElId, slotTask);
+        const viewTableHeadEl = createViewTableHead(tableDivElId, value);
         tableDivEl.appendChild(viewTableHeadEl);
         tableDivEl.appendChild(viewTableBodyEl);
         schedDivEl.appendChild(tableDivEl);
-    }
+    });
 
     return tableDivEl;
+}
+
+function compare(a, b) {
+    if (a[0].start < b[0].start)
+        return -1;
+    if (a[0].start > b[0].start)
+        return 1;
+    return 0;
 }

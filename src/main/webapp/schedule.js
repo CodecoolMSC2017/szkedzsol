@@ -181,7 +181,7 @@ function createDropTableBody(dropTableElId) {
         const dropDivEl = document.createElement('div');
         dropDivEl.id = dropTableElId + counter;
         dropDivEl.className = 'drop_zone';
-        dropDivEl.value = counter + 1;                          //this is muy importante
+        dropDivEl.value = counter;                          //this is muy importante
         const dropDivElId = dropDivEl.id;
         dropDivEl.setAttribute('ondrop', 'drag_drop(event)');
         dropDivEl.setAttribute('ondragover', 'return false');
