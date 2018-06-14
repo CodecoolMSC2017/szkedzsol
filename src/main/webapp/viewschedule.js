@@ -140,7 +140,8 @@ function createViewTable(uniqueNames, slotTask) {
     uniqueNames.forEach((key, value) => {
         const tableDivEl = document.createElement('table');
         tableDivEl.setAttribute("id", value);
-        tableDivEl.style.cssFloat = 'left';
+        tableDivEl.setAttribute('class', 'viewTable');
+        //tableDivEl.style.cssFloat = 'left';
         const tableDivElId = tableDivEl.id;
         const viewTableBodyEl = createViewTableBody(tableDivElId, slotTask);
         const viewTableHeadEl = createViewTableHead(tableDivElId, value);

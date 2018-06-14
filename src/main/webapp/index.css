@@ -69,11 +69,11 @@ li a {
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+    background-color: rgb(21, 150, 226);
 }
 
 .active {
-    background-color: #111;
+    background-color: rgb(21, 150, 226);
 }
 
 /*FOR TASK LISTING IN SCHEDULE CREATING */
@@ -151,9 +151,9 @@ table {
 .center-box {
     margin: 0 auto;
     width: 95%;
-    border: 3px solid black;
+    border: 3px solid rgb(21, 150, 226);
     border-radius: 8px;
-    background-color: white;
+    background-color: rgb(166, 168, 171);
     text-align: center;
     word-wrap: break-word;
     min-height: 100vh;
@@ -270,7 +270,7 @@ table {
 
 /* test button style */
 #addNewScheduleButton {
-    background-color: lightslategrey;
+    background-color: rgb(5, 117, 183);
     border-radius: 6px;
     border-color:lightslategrey;
     border-width:3px;
@@ -291,7 +291,7 @@ table {
 }
 
 #viewScheduleButton {
-    background-color: lightslategrey;
+    background-color: rgb(5, 117, 183);
     border-radius: 6px;
     border-color:lightslategrey;
     border-width:3px;
@@ -305,7 +305,7 @@ table {
 }
 
 #addDaysToScheduleButton {
-    background-color: lightslategrey;
+    background-color: rgb(5, 117, 183);
     border-radius: 6px;
     border-color:lightslategrey;
     border-width:2px;
@@ -323,7 +323,7 @@ table {
 }
 
 #shareButton {
-    background-color: lightslategrey;
+    background-color: rgb(5, 117, 183);
     border-radius: 6px;
     border-color:lightslategrey;
     border-width:2px;
@@ -346,7 +346,7 @@ table {
 }
 
 #addNewTaskButton {
-    background-color: lightslategrey;
+    background-color: rgb(5, 117, 183);
     border-radius: 6px;
     border-color:lightslategrey;
     border-width:3px;
@@ -407,3 +407,22 @@ table {
     padding: 0;
 }
 
+.viewTable {
+    display: inline-table;
+    position: static;
+    margin: 5;
+    padding: 3;
+    background-color: rgb(21, 150, 226);
+    color: black;
+}
+
+th {
+    background-color: rgb(21, 150, 226);
+    color: white;
+}
+tbody, tr:nth-child(even) {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    border-color:black;
+    border-width:1.5px;
+}
