@@ -3,22 +3,41 @@ let schedDivEl;
 let colNames;
 
 function onViewClicked() {
-    const scheduleEl = document.getElementById("schedule-id");
-    const scheduleId = scheduleEl.textContent;
+    const sharedScheduleId = document.getElementById("shareId");
+    if (sharedScheduleId.textContent === '') {
+        const scheduleEl = document.getElementById("schedule-id");
+        const scheduleId = scheduleEl.textContent;
 
-    const params = new URLSearchParams();
-    params.append('scheduleId', scheduleId);
+        const params = new URLSearchParams();
+        params.append('scheduleId', scheduleId);
 
-    const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onViewResponse);
-    xhr.addEventListener('error', onNetworkError);
-    xhr.open('GET', 'protected/viewschedule?' + params.toString());
-    xhr.send();
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', onViewResponse);
+        xhr.addEventListener('error', onNetworkError);
+        xhr.open('GET', 'protected/viewschedule?' + params.toString());
+        xhr.send();
+    } else {
+        const scheduleId = sharedScheduleId.textContent;
+
+        const params = new URLSearchParams();
+        params.append('scheduleId', scheduleId);
+
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', onViewResponse);
+        xhr.addEventListener('error', onNetworkError);
+        xhr.open('POST', 'share?id=' + scheduleId);
+        xhr.send(params);
+        // sharedScheduleId.textContent = null;
+    }
 }
 
 function onViewResponse() {
     clearMessages();
-    if (this.status === OK) {
+    const sharedScheduleId = document.getElementById("shareId");
+    if (this.status === OK && sharedScheduleId.textContent === '') {
+        showContents(["view-schedule", "temp-share-button"]);
+        onViewRecieve(JSON.parse(this.responseText));
+    } else if (this.status === OK && sharedScheduleId.textContent !== '') {
         showContents(["view-schedule"]);
         onViewRecieve(JSON.parse(this.responseText));
     } else {
@@ -30,6 +49,7 @@ function onViewRecieve(text) {
     const scheduleDtoList = text;
     schedDivEl = document.getElementById("view-schedule");
     schedDivEl.textContent = null;
+
     const schedules = [];
     const cols = [];
     const slots = [];

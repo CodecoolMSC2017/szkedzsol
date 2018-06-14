@@ -138,10 +138,6 @@
     <div id="schedule-tasks-content" class="hidden content center-box">
         <div id="task-list-drop"></div>
         <br><br><br>
-
-        <form id="share-form" onsubmit="return false;">
-            <button id='shareButton' onclick="onScheduleShareClicked();">Share</button>
-        </form>
     </div>
 
     <div id="tasks-content" class="hidden content center-box">
@@ -191,7 +187,14 @@
         <p id="task-modify-error-message"></p>
     </div>
 
-    <div id="share" class="content">
+    <div id="share" class="hidden content">
+        <p id="shareId"></p>
+    </div>
+
+    <div id="temp-share-button" class="hidden content">
+            <form id="share-form" onsubmit="return false;">
+                <button id='shareButton' onclick="onScheduleShareClicked();">Share</button>
+            </form>
     </div>
 
     <div id="users-content" class="hidden content center-box">

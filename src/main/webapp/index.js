@@ -107,6 +107,18 @@ function hideMenuContent() {
     removeAllChildren(menu);
 }
 
+function checkIfUserRoleIsGuest() {
+    const pathArray = window.location.pathname.split('/');
+    const keyWord = pathArray[2];
+    if (keyWord === 'share') {
+        const idArray = window.location.search.replace('?', ' ').replace('=', ' ').split(' ');
+        const scheduleId = idArray[idArray.length - 1];
+        const shareScheduleId = document.getElementById('shareId');
+        shareScheduleId.textContent = scheduleId;
+        onViewClicked();
+    }
+}
+
 function onLoad() {
     registerContentDivEl = document.getElementById('register-content');
     loginContentDivEl = document.getElementById('login-content');
@@ -136,6 +148,8 @@ function onLoad() {
 
     const toregisterButtonEl = document.getElementById('toregister-button');
     toregisterButtonEl.addEventListener('click', toRegisterButtonClick);
+
+    checkIfUserRoleIsGuest();
 
     if (hasAuthorization()) {
         onProfileLoad(getAuthorization());
