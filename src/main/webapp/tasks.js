@@ -60,6 +60,7 @@ function appendTask(task) {
     descriptionTdEl.textContent = task.description;
     descriptionTdEl.setAttribute('class','zoom');
     const deletebuttonEl = document.createElement('button');
+    deletebuttonEl.id = "dButton";
     deletebuttonEl.textContent = 'X';
     deletebuttonEl.value = task.id;
     deletebuttonEl.addEventListener('click', onTaskDeleteClicked);

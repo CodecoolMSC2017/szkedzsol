@@ -68,6 +68,7 @@ function appendSchedule(schedule) {
     nameTdEl.appendChild(aEl);
 
     const deletebuttonEl = document.createElement('button');
+    deletebuttonEl.id = "dButton";
     deletebuttonEl.textContent = 'X';
     deletebuttonEl.value = schedule.id;
     deletebuttonEl.addEventListener('click', onScheduleDeleteClicked);
