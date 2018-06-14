@@ -6,6 +6,7 @@ const INTERNAL_SERVER_ERROR = 500;
 
 let registerContentDivEl;
 let loginContentDivEl;
+let welcomeContentDivEl;
 let profileContentDivEl;
 let taskContentDivEl;
 let tasksContentDivEl;
@@ -122,6 +123,7 @@ function checkIfUserRoleIsGuest() {
 function onLoad() {
     registerContentDivEl = document.getElementById('register-content');
     loginContentDivEl = document.getElementById('login-content');
+    welcomeContentDivEl = document.getElementById('welcome-content');
     profileContentDivEl = document.getElementById('profile-content');
     taskContentDivEl = document.getElementById('task-content');
     tasksContentDivEl = document.getElementById('tasks-content');

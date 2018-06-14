@@ -3,7 +3,7 @@ function onLoginResponse() {
         const user = JSON.parse(this.responseText);
         setAuthorization(user);
         createMenu();
-        onProfileLoad();
+        onWelcomeLoad();
 
     } else {
         onOtherResponse(loginContentDivEl, this);
@@ -57,7 +57,7 @@ function onGoogleLoginResponse() {
         const user = JSON.parse(this.responseText);
         setAuthorization(user);
         createMenu();
-        onProfileLoad();
+        onWelcomeLoad();
 
     } else {
         onOtherResponse(loginGoogleContentDivEl, this);

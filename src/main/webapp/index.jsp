@@ -11,6 +11,7 @@
     <c:url value="/index.js" var="indexScriptUrl" />
     <c:url value="/register.js" var="registerScriptUrl" />
     <c:url value="/login.js" var="loginScriptUrl" />
+    <c:url value="/welcome.js" var="welcomeScriptUrl" />
     <c:url value="/menupoints.js" var="menuScriptUrl" />
     <c:url value="/profile.js" var="profileScriptUrl" />
     <c:url value="/schedule.js" var="scheduleScriptUrl" />
@@ -29,6 +30,7 @@
     <script src="${indexScriptUrl}"></script>
     <script src="${registerScriptUrl}"></script>
     <script src="${loginScriptUrl}"></script>
+    <script src="${welcomeScriptUrl}"></script>
     <script src="${menuScriptUrl}"></script>
     <script src="${profileScriptUrl}"></script>
     <script src="${scheduleScriptUrl}"></script>
@@ -78,6 +80,12 @@
     </div>
 
     <br><br><br>
+
+    <div id="welcome-content" class="hidden content">
+        <canvas id="canvas">
+            Not supported
+        </canvas>
+    </div>
 
     <div id="profile-content" class="hidden content center-box">
         <h1>Profile</h1>
