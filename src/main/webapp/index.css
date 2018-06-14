@@ -1,9 +1,11 @@
 #register-content {
+    color: white;
     padding: 30px;
-    background-color: #5c6366;
+    background-color: #516c78c9;
     border-style: solid;
-    border-width: 4px black;
+    border-width: 4px;
     border-radius: 8px;
+    border-color:rgb(21, 150, 226);
     position: fixed;
     left: 50%;
     top: 50%;
@@ -12,10 +14,12 @@
 }
 
 #login-content {
+    color: white;
     padding: 30px;
-    background-color: #5c6366;
+    background-color: #516c78c9;
     border-style: solid;
-    border-width: 4px black;
+    border-color:rgb(21, 150, 226);
+    border-width: 4px;
     border-radius: 8px;
     position: fixed;
     left: 50%;
@@ -25,8 +29,9 @@
 }
 /* Buttons on the registration/login page */
 .mainButton {
-    background-color: lightslategrey;
+    background-color: rgb(66, 133, 244);
     border-radius: 10px;
+    border-color: rgb(5, 117, 183);
     color: white;
     position:sticky;
     height: 50px;
@@ -38,6 +43,7 @@
 
 .mainButton:hover {
     background: green;
+    border-color: darkgreen;
 }
 /* Navigation bar */
 body {
@@ -368,7 +374,7 @@ table {
 }
 
 #modifyTaskButton {
-    background-color: lightslategrey;
+    background-color: rgb(5, 117, 183);
     border-radius: 6px;
     border-color:lightslategrey;
     border-width:2px;
