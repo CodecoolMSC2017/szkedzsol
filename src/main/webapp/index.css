@@ -285,31 +285,125 @@ table {
 }
 
 #addNewScheduleButton:hover {
+    border-color:darkgreen;
     background: green;
     color:white;
 }
 
 #viewScheduleButton {
-
+    background-color: lightslategrey;
+    border-radius: 6px;
+    border-color:lightslategrey;
+    border-width:3px;
+    color: white;
+    position:sticky;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 #addDaysToScheduleButton {
+    background-color: lightslategrey;
+    border-radius: 6px;
+    border-color:lightslategrey;
+    border-width:2px;
+    color: white;
+    position:sticky;
+    width: 90px;
+    height: 27x;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+}
 
+#addDaysToScheduleButton:hover:after {
+    content: ' +';
 }
 
 #shareButton {
+    background-color: lightslategrey;
+    border-radius: 6px;
+    border-color:lightslategrey;
+    border-width:2px;
+    color: white;
+    position:sticky;
+    float: right;
+    margin:60px;
 
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#shareButton:hover {
+    border-color:darkgreen;
+    background: green;
+    color:white;
 }
 
 #addNewTaskButton {
+    background-color: lightslategrey;
+    border-radius: 6px;
+    border-color:lightslategrey;
+    border-width:3px;
+    color: white;
+    position:sticky;
 
+    width: 65px;
+    height: 35px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#addNewTaskButton:hover {
+    border-color:darkgreen;
+    background: green;
+    color:white;
+    font-size: 17px;
 }
 
 #modifyTaskButton {
+    background-color: lightslategrey;
+    border-radius: 6px;
+    border-color:lightslategrey;
+    border-width:2px;
+    color: white;
+    position:sticky;
+    width: 90px;
+    height: 27x;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+}
 
+#dButton {
+    background-color: white;
+    border-radius: 5px;
+    border-color:lightslategrey;
+    border-width:1.5px;
+    color: black;
+    position:sticky;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#dButton:hover {
+    border-color:black;
+    background-color:red;
+    color: white;
+    font-size:15px;
 }
 
 #canvas {
     margin: 0;
     padding: 0;
 }
+

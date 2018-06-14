@@ -127,11 +127,12 @@ function createViewTableHead(tableDivElId, uniqueNames) {
     const theadEl = document.createElement('thead');
     const tableDivEl = document.getElementById('viewTable');
     const viewTdEl = document.createElement('td');
-
-    viewTdEl.textContent = uniqueNames;
-
+    const strongEl = document.createElement('strong');
+    strongEl.textContent = uniqueNames;
+    const pEl = document.createElement('p');
+    pEl.appendChild(strongEl);
+    viewTdEl.appendChild(strongEl);
     theadEl.appendChild(viewTdEl);
-
     return theadEl;
 }
 
